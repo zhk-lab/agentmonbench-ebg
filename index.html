@@ -1,0 +1,767 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f8faff" />
+    <meta
+      name="description"
+      content="What Did the Agent Actually Do? EBG makes long-horizon agents easier to oversee through source-linked behavior graphs. Explore AgentMonBench and results across eight models."
+    />
+    <meta property="og:title" content="EBG · What Did the Agent Actually Do?" />
+    <meta
+      property="og:description"
+      content="Evidence-Grounded Oversight for Long-Horizon Agents. A training-free method, a 300-instance benchmark, and evidence you can trace."
+    />
+    <meta property="og:type" content="website" />
+    <title>EBG · What Did the Agent Actually Do?</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+
+    <link rel="stylesheet" href="styles.css" />
+    <script src="data.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#overview">Skip to content</a>
+
+    <main id="top">
+      <section class="hero wrap" aria-labelledby="hero-title">
+        <h1 id="hero-title">
+          <span class="paper-title-line">What Did the Agent Actually Do?</span
+          ><span class="paper-title-line"
+            >Evidence-Grounded Oversight for
+            <span class="unbroken">Long-Horizon Agents</span></span
+          >
+        </h1>
+        <div class="authors" aria-label="Authors">
+          <span>Zhongxiang Sun<sup>1*</sup></span
+          ><span>Jiahao Yan<sup>1*</sup></span
+          ><span>Hongkang Zhao<sup>1*</sup></span
+          ><span>Haojie Ding<sup>2</sup></span
+          ><span>Boheng Zhang<sup>2</sup></span
+          ><span>Fan Yang<sup>2</sup></span
+          ><span>Xiao Zhang<sup>1†</sup></span
+          ><span>Jun Xu<sup>1</sup></span>
+        </div>
+        <p class="affiliations">
+          <sup>1</sup> Gaoling School of Artificial Intelligence, Renmin
+          University of China &nbsp; <sup>2</sup> Kuaishou Technology
+        </p>
+        <p class="author-note">
+          * Equal contribution &nbsp; † Corresponding author
+        </p>
+        <div class="hero-actions">
+          <a
+            class="button"
+            href="assets/paper.pdf"
+            target="_blank"
+            rel="noopener"
+            ><img
+              class="resource-icon monochrome"
+              src="assets/icons/paper.svg"
+              alt=""
+              width="17"
+              height="17"
+            />Paper</a
+          >
+          <a
+            class="button"
+            href="https://github.com/zhk-lab/EBG"
+            target="_blank"
+            rel="noopener"
+            ><img
+              class="resource-icon monochrome"
+              src="assets/icons/github.svg"
+              alt=""
+              width="17"
+              height="17"
+            />Code</a
+          >
+          <a
+            class="button"
+            href="https://huggingface.co/datasets/ZhaoHongKang/AgentMonBench"
+            target="_blank"
+            rel="noopener"
+            ><img
+              class="resource-icon"
+              src="assets/icons/huggingface.svg"
+              alt=""
+              width="20"
+              height="20"
+            />Data</a
+          >
+          <a class="button" href="#task-showcase"
+            ><img
+              class="resource-icon monochrome"
+              src="assets/icons/images.svg"
+              alt=""
+              width="17"
+              height="17"
+            />Task showcase</a
+          >
+          <a class="button" href="#results"
+            ><span aria-hidden="true">▤</span>Leaderboard</a
+          >
+        </div>
+        <figure class="hero-paper-figure">
+          <button
+            class="paper-preview"
+            type="button"
+            data-figure="assets/benchmark-examples.webp"
+            data-title="AgentMonBench · Illustrative examples"
+            data-caption="Illustrative examples from the paper: an omitted scoring rule, an undisclosed metric change, and a cleanup decision that risks deleting saved data."
+            aria-label="Expand the AgentMonBench overview figure"
+          >
+            <img
+              src="assets/benchmark-examples.webp"
+              width="2400"
+              height="1350"
+              fetchpriority="high"
+              alt="Three AgentMonBench examples: SpecGAP asks how unanswered questions should be scored; SilentSwap exposes a switch from exact match to semantic similarity; FeedbackTrace surfaces a data-retention decision before user feedback."
+            />
+          </button>
+          <figcaption>
+            <strong
+              >What should a monitor bring to the user's attention?</strong
+            >
+            AgentMonBench studies missing requirements, silent behavior changes,
+            and decisions that need verification.
+            <span>Click the figure to enlarge.</span>
+          </figcaption>
+        </figure>
+        <div class="stats-strip">
+          <div><strong>300</strong><span>evaluation instances</span><small>100 per task</small></div>
+          <div><strong>484</strong><span>omitted requirements</span><small>SpecGAP</small></div>
+          <div><strong>500</strong><span>behavior substitutions</span><small>SilentSwap</small></div>
+          <div><strong>100</strong><span>pre-feedback trajectories</span><small>FeedbackTrace</small></div>
+        </div>
+      </section>
+      <header class="site-header">
+        <nav class="nav wrap" aria-label="Main navigation">
+          <a class="brand" href="#top" aria-label="EBG home"
+            ><img src="favicon.svg" width="30" height="30" alt="" /><span
+              >EBG<span class="brand-separator">/</span
+              ><span class="brand-sub">AgentMonBench</span></span
+            ></a
+          >
+          <button
+            class="menu-toggle"
+            aria-expanded="false"
+            aria-controls="nav-links"
+            aria-label="Open navigation"
+          >
+            <span></span><span></span>
+          </button>
+          <div class="nav-links" id="nav-links">
+            <a href="#benchmark">Benchmark</a><a href="#method">Method</a
+            ><a href="#results">Leaderboard</a
+            ><a href="#case-study">In practice</a
+            ><a
+              class="nav-code"
+              href="https://github.com/zhk-lab/EBG"
+              target="_blank"
+              rel="noopener"
+              >GitHub
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M9 18c-4 1-4-2-6-2m12 6v-4a3 3 0 0 0-.8-2.3c2.7-.3 5.5-1.3 5.5-6A4.7 4.7 0 0 0 18.4 6a4.3 4.3 0 0 0-.1-3.6s-1-.3-3.7 1.4a12.8 12.8 0 0 0-6.7 0C5.2 2.1 4.2 2.4 4.2 2.4A4.3 4.3 0 0 0 4.1 6a4.7 4.7 0 0 0-1.3 3.3c0 4.7 2.8 5.7 5.5 6A3 3 0 0 0 7.5 18v4"
+                /></svg
+            ></a>
+          </div>
+        </nav>
+      </header>
+      <section class="section wrap overview" id="overview">
+        <h2>Abstract</h2>
+        <div class="abstract-copy">
+          <p>
+            As agents take on long-horizon tasks, users shift from making
+            individual decisions to overseeing autonomous execution. Yet the
+            volume of agent activity and the fragmentation of supporting
+            evidence make it difficult to determine which decisions warrant user
+            verification. We study monitors that identify consequential
+            decisions and locate evidence to help users assess their
+            implications.
+          </p>
+          <p>
+            We introduce <strong>AgentMonBench</strong>, a software-engineering
+            benchmark comprising three subsets that cover two complementary
+            dimensions: alignment between requirements and behavior, and
+            awareness of consequential autonomous decisions for verification. To
+            support these judgments, we propose the
+            <strong>Evidence-Grounded Behavior Graph (EBG)</strong>, a
+            training-free method that groups source-linked evidence into
+            behaviors and organizes their relationships into a graph. EBG
+            presents task-oriented views of this graph to help monitors
+            interpret behavior in context.
+          </p>
+          <p>
+            Experiments across eight models show that EBG improves decision
+            identification and evidence localization in most settings compared
+            with direct access to the original context. Further experiments show
+            that EBG's evidence-localization gains persist across input scales
+            and hyperparameter settings, while real-world applications
+            illustrate its practical value for human oversight.
+          </p>
+        </div>
+      </section>
+      <section class="section benchmark-section" id="benchmark">
+        <div class="wrap">
+          <div class="section-heading">
+            <div>
+              <h2>AgentMonBench</h2>
+            </div>
+            <p>
+              Three complementary oversight tasks. 100 instances each.
+              From missing requirements to silent changes and consequential decisions.
+            </p>
+          </div>
+          <div class="statistics-grid" id="statistics">
+            <figure class="statistic-figure">
+              <figcaption>
+                <span class="statistic-kicker">INPUT SCALE</span>
+                <h3>Long Contexts, Scattered Evidence</h3>
+                <p>
+                  High-context FeedbackTrace inputs reach a median of
+                  <strong>86.1k tokens</strong>, compared with about 32k
+                  for the repository tasks.
+                </p>
+              </figcaption>
+              <button class="statistic-plot" type="button"
+                data-figure="assets/statistics/input-context.svg"
+                data-title="AgentMonBench · Input context size"
+                data-caption="Median input tokens within the Low, Medium, and High context groups. Groups contain 33, 33, and 34 instances, respectively, ranked separately within each task. Source: paper Table B1."
+                aria-label="Enlarge input context size chart">
+                <picture>
+                  <source media="(max-width: 600px)" srcset="assets/statistics/input-context-mobile.svg" />
+                  <img src="assets/statistics/input-context.svg" width="650" height="450" loading="lazy"
+                    alt="Low, Medium, and High group median input tokens: SpecGAP 10,964, 20,363, 32,643; SilentSwap 12,677, 17,956, 31,861.5; FeedbackTrace 9,468, 28,936, 86,138.5." />
+                </picture>
+              </button>
+              <p class="statistic-note">Group medians · 33 / 33 / 34 instances per task</p>
+            </figure>
+            <figure class="statistic-figure statistic-specgap">
+              <figcaption>
+                <span class="statistic-kicker">SPECGAP</span>
+                <h3>What the Brief Leaves Unsaid</h3>
+                <p>
+                  <strong>484 omitted requirements</strong> span seven categories,
+                  from boundary behavior and API contracts to data flow and evidence.
+                </p>
+              </figcaption>
+              <button class="statistic-plot" type="button"
+                data-figure="assets/statistics/omitted-requirements.svg"
+                data-title="SpecGAP · Omitted requirement types"
+                data-caption="Counts of omitted conditions across 100 SpecGAP instances. The seven categories sum to 484 conditions; each condition has one category."
+                aria-label="Enlarge omitted requirement types chart">
+                <picture>
+                  <source media="(max-width: 600px)" srcset="assets/statistics/omitted-requirements-mobile.svg" />
+                  <img src="assets/statistics/omitted-requirements.svg" width="650" height="450" loading="lazy"
+                    alt="484 omitted conditions: boundary behavior 167, API constraints 130, data flow 95, dependency choices 46, evidence boundaries 34, metrics or evaluation 8, and test requirements 4." />
+                </picture>
+              </button>
+              <p class="statistic-note">7 requirement types · 4.84 omissions per instance</p>
+            </figure>
+            <figure class="statistic-figure statistic-silentswap">
+              <figcaption>
+                <span class="statistic-kicker">SILENTSWAP</span>
+                <h3>Tests Pass. Behavior Changes.</h3>
+                <p>
+                  <strong>500 semantic substitutions</strong> cover eight mechanisms.
+                  Every instance contains five changes that preserve existing tests.
+                </p>
+              </figcaption>
+              <button class="statistic-plot" type="button"
+                data-figure="assets/statistics/silent-substitutions.svg"
+                data-title="SilentSwap · Substitution mechanisms"
+                data-caption="Counts of semantic substitutions across 100 SilentSwap instances. Eight mechanisms sum to 500 substitutions, with exactly five substitutions per instance."
+                aria-label="Enlarge substitution mechanisms chart">
+                <picture>
+                  <source media="(max-width: 600px)" srcset="assets/statistics/silent-substitutions-mobile.svg" />
+                  <img src="assets/statistics/silent-substitutions.svg" width="650" height="450" loading="lazy"
+                    alt="500 substitutions: input validation 102; ordering and precedence 67; representation and normalization 63; defaults, nulls, and fallbacks 61; exception handling 60; parsing and matching 58; state, identity, and lifecycle 58; dispatch, routing, and aggregation 31." />
+                </picture>
+              </button>
+              <p class="statistic-note">8 change mechanisms · 5 substitutions per instance</p>
+            </figure>
+            <figure class="statistic-figure statistic-feedbacktrace">
+              <figcaption>
+                <span class="statistic-kicker">FEEDBACKTRACE</span>
+                <h3>Before the User Intervenes</h3>
+                <p>
+                  <strong>100 pre-feedback trajectories</strong> contain 14,681
+                  interaction events, with the longest spanning 908 events.
+                </p>
+              </figcaption>
+              <button class="statistic-plot" type="button"
+                data-figure="assets/statistics/trajectory-lengths.svg"
+                data-title="FeedbackTrace · Pre-feedback trajectory lengths"
+                data-caption="Distribution of event counts in the 100 released Long-view inputs, before subsequent user feedback. An event is a user prompt, assistant response paragraph, or tool-call/result exchange. Median: 57 events; maximum: 908 events."
+                aria-label="Enlarge trajectory lengths chart">
+                <picture>
+                  <source media="(max-width: 600px)" srcset="assets/statistics/trajectory-lengths-mobile.svg" />
+                  <img src="assets/statistics/trajectory-lengths.svg" width="650" height="450" loading="lazy"
+                    alt="100 pre-feedback trajectories grouped in bins of 100 events, from 0 to 1,000: 68, 10, 8, 3, 3, 1, 2, 1, 3, 1 trajectories per bin. Median 57 events; longest 908." />
+                </picture>
+              </button>
+              <p class="statistic-note">User prompts, assistant paragraphs, and tool exchanges</p>
+            </figure>
+          </div>
+          <div class="statistics-source">
+            <p>Input sizes: <a href="assets/paper.pdf#page=15" target="_blank" rel="noopener">paper Table B1</a>. Counts: released evaluation data. Click any chart to enlarge.</p>
+            <a href="assets/benchmark-statistics.json" download>Download chart data</a>
+          </div>
+          <div class="showcase-heading" id="task-showcase">
+            <h3>Three Oversight Tasks</h3>
+            <p>Identify the consequential decision. Find the evidence behind it.</p>
+          </div>
+          <div
+            class="benchmark-tabs"
+            role="tablist"
+            aria-label="Benchmark task"
+          >
+            <button
+              class="benchmark-tab active"
+              role="tab"
+              aria-selected="true"
+              aria-controls="benchmark-panel"
+              id="tab-specgap"
+              data-task="specgap"
+            >
+              <span class="tab-number">01</span
+              ><span
+                ><strong>SpecGAP</strong
+                ><small>What was left unspecified?</small></span
+              ><span class="tab-count">100</span></button
+            ><button
+              class="benchmark-tab"
+              role="tab"
+              aria-selected="false"
+              aria-controls="benchmark-panel"
+              id="tab-silentswap"
+              data-task="silentswap"
+              tabindex="-1"
+            >
+              <span class="tab-number">02</span
+              ><span
+                ><strong>SilentSwap</strong
+                ><small>What changed without asking?</small></span
+              ><span class="tab-count">100</span></button
+            ><button
+              class="benchmark-tab"
+              role="tab"
+              aria-selected="false"
+              aria-controls="benchmark-panel"
+              id="tab-feedbacktrace"
+              data-task="feedbacktrace"
+              tabindex="-1"
+            >
+              <span class="tab-number">03</span
+              ><span
+                ><strong>Feedback<wbr />Trace</strong
+                ><small>What needed verification?</small></span
+              ><span class="tab-count">100</span>
+            </button>
+          </div>
+          <div
+            class="benchmark-panel"
+            id="benchmark-panel"
+            role="tabpanel"
+            aria-labelledby="tab-specgap"
+          >
+            <div class="task-story">
+              <span class="tag" id="task-dimension"></span>
+              <h3 id="task-title"></h3>
+              <p id="task-description"></p>
+              <div class="task-objective">
+                <span class="mini-label">THE MONITOR'S JOB</span>
+                <p id="task-objective"></p>
+              </div>
+              <a
+                class="text-link"
+                id="task-docs"
+                href="https://github.com/zhk-lab/EBG/tree/main/benchmarks/specgap"
+                target="_blank"
+                rel="noopener"
+                >Explore this task <span>↗</span></a
+              >
+            </div>
+            <div class="task-example">
+              <div class="example-header">
+                <span class="mini-label">ILLUSTRATIVE SCENARIO</span
+                ><span class="scenario-label" id="scenario-kind"></span>
+              </div>
+              <div class="scenario-step">
+                <span class="step-dot"></span
+                ><span class="mini-label" id="scenario-label-one"></span>
+                <p id="scenario-one"></p>
+              </div>
+              <div class="scenario-step">
+                <span class="step-dot"></span
+                ><span class="mini-label" id="scenario-label-two"></span>
+                <p id="scenario-two"></p>
+              </div>
+              <div class="scenario-question">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="M9 8a3 3 0 0 1 6 1c0 2-3 2-3 5m0 3h.01" />
+                </svg>
+                <p id="scenario-question"></p>
+              </div>
+            </div>
+          </div>
+          <div class="benchmark-note">
+            <span>Two complementary dimensions</span>
+            <p>
+              Requirement–behavior alignment <span>+</span> Awareness of
+              consequential autonomous decisions
+            </p>
+          </div>
+          <div class="benchmark-figures" aria-label="Figures from the paper">
+            <span>Inside the paper</span>
+            <button
+              type="button"
+              data-figure="assets/benchmark-overview.webp"
+              data-title="AgentMonBench · Construction pipeline"
+              data-caption="AgentMonBench construction and validation: SpecGAP, SilentSwap, and FeedbackTrace."
+            >
+              Construction pipeline
+            </button>
+            <button
+              type="button"
+              data-figure="assets/benchmark-examples.webp"
+              data-title="AgentMonBench · Illustrative examples"
+              data-caption="Three illustrative examples from the paper: an omitted scoring rule, an undisclosed metric change, and a cleanup decision that risks deleting saved data."
+            >
+              Illustrative examples
+            </button>
+          </div>
+        </div>
+      </section>
+      <section class="method-section" id="method">
+        <div class="wrap">
+          <div class="method-intro">
+            <h2>Evidence-Grounded Behavior Graph</h2>
+            <div>
+              <p>
+                EBG turns source-linked evidence into behaviors, scopes, and
+                relations. Task-oriented graph views put each decision back in
+                context.
+              </p>
+              <span class="dark-tag">Training-free</span
+              ><span class="dark-tag">Source-linked</span
+              ><span class="dark-tag">Task-oriented</span>
+            </div>
+          </div>
+          <div class="method-steps">
+            <article>
+              <span class="method-number">01</span>
+              <h3>Gather the evidence</h3>
+              <p>
+                Preserve source locations from requirements, code, traces, and
+                feedback.
+              </p>
+            </article>
+            <article>
+              <span class="method-number">02</span>
+              <h3>Organize behaviors</h3>
+              <p>
+                Group evidence into behaviors and connect their scopes and
+                relationships.
+              </p>
+            </article>
+            <article>
+              <span class="method-number">03</span>
+              <h3>Retrieve for the task</h3>
+              <p>
+                Expose relevant graph views so the monitor can reason with
+                supporting context.
+              </p>
+            </article>
+          </div>
+          <figure class="paper-figure">
+            <button
+              class="figure-expand"
+              data-figure="assets/ebg-method.webp"
+              data-caption="Evidence-Grounded Behavior Graph: the method overview from the paper."
+              aria-label="Expand EBG method figure"
+            >
+              <img
+                src="assets/ebg-method.webp"
+                width="2400"
+                height="1166"
+                loading="lazy"
+                alt="EBG method overview: evidence intake, behavior atomization, relation linking, graph assembly and task-oriented retrieval."
+              /><span class="expand-label"
+                >View full figure
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5" /></svg
+              ></span>
+            </button>
+            <figcaption>
+              <span>FIGURE / EBG</span> From scattered artifacts to
+              evidence-grounded oversight.
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+      <section class="section wrap results-section" id="results">
+        <div class="section-heading">
+          <div>
+            <h2>Leaderboard</h2>
+          </div>
+          <p>
+            Explore the paper's main results across eight models. Compare EBG
+            with direct context access and RepoGraph on each oversight task.
+          </p>
+        </div>
+        <div class="results-insights" id="results-insights"></div>
+        <div class="leaderboard">
+          <div class="leaderboard-top">
+            <div>
+              <span class="mini-label">AGENTMONBENCH</span>
+              <h3>Research leaderboard</h3>
+            </div>
+            <a
+              class="download-link"
+              href="assets/main-results.csv"
+              aria-label="Download results as CSV"
+              download
+              ><svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5" /></svg
+              >Download results</a
+            >
+          </div>
+          <div class="leaderboard-controls">
+            <div
+              class="segmented"
+              role="tablist"
+              aria-label="Leaderboard benchmark"
+            >
+              <button
+                role="tab"
+                aria-selected="true"
+                class="active"
+                data-benchmark="SpecGap"
+                id="results-tab-SpecGap"
+                aria-controls="leaderboard-panel"
+              >
+                SpecGAP</button
+              ><button
+                role="tab"
+                aria-selected="false"
+                tabindex="-1"
+                data-benchmark="SilentSwap"
+                id="results-tab-SilentSwap"
+                aria-controls="leaderboard-panel"
+              >
+                SilentSwap</button
+              ><button
+                role="tab"
+                aria-selected="false"
+                tabindex="-1"
+                data-benchmark="FeedbackTrace"
+                id="results-tab-FeedbackTrace"
+                aria-controls="leaderboard-panel"
+              >
+                FeedbackTrace
+              </button>
+            </div>
+            <label class="method-select"
+              >Method
+              <select id="method-filter">
+                <option value="all">All methods</option>
+                <option value="EBG">EBG</option>
+                <option value="Base">Base</option>
+                <option value="RepoGraph">RepoGraph</option>
+              </select></label
+            >
+          </div>
+          <p class="scroll-hint">Scroll horizontally to compare all metrics.</p>
+          <div
+            class="table-scroll"
+            id="leaderboard-panel"
+            tabindex="0"
+            role="tabpanel"
+            aria-labelledby="results-tab-SpecGap"
+          >
+            <table>
+              <caption class="sr-only">
+                Main experimental results; select column headers to sort.
+              </caption>
+              <thead id="leaderboard-head"></thead>
+              <tbody id="leaderboard-body"></tbody>
+            </table>
+          </div>
+          <div class="leaderboard-footer">
+            <span
+              ><i class="legend-dot"></i> EBG &nbsp;
+              <span class="base-legend"
+                >Base = direct access to original context</span
+              ></span
+            ><span id="result-count" aria-live="polite"></span>
+          </div>
+        </div>
+        <p class="results-note" id="metric-note"></p>
+        <p class="source-note">
+          Source: Table 1 of the paper. Scores are shown on a 0–100 scale;
+          higher is better. Highlights above are derived from paired EBG–Base
+          comparisons. These are reported experimental results, not a live
+          submission ranking.
+          <a href="assets/main-results.csv" download
+            >Download full results (CSV).</a
+          >
+        </p>
+      </section>
+      <section class="case-section" id="case-study">
+        <div class="wrap">
+          <div class="section-heading">
+            <div>
+              <h2>EBG in Practice</h2>
+            </div>
+            <p>
+              A Codex review harness puts EBG to work in five research tasks
+              adapted from real agent failures.
+            </p>
+          </div>
+          <div class="case-card">
+            <div class="case-copy">
+              <span class="tag">CASE STUDY / VALIDATION DATA LEAKAGE</span>
+              <h3>The score went up.<br />The comparison broke.</h3>
+              <p>
+                A candidate reached <strong>75.00%</strong> accuracy, above the
+                baseline's <strong>71.67%</strong>. Evidence-grounded review
+                traced <strong>8 of 80</strong> added training samples to
+                validation data. The agent disclosed the leakage and retained
+                the baseline.
+              </p>
+              <a
+                class="button primary"
+                href="https://github.com/zhk-lab/EBG/tree/main/harness/case_studies"
+                target="_blank"
+                rel="noopener"
+                >Explore the five case studies</a
+              >
+            </div>
+            <div class="review-flow">
+              <article>
+                <span class="review-index">01</span>
+                <div>
+                  <span class="mini-label">OBSERVED GAIN</span>
+                  <h4>71.67% → 75.00%</h4>
+                  <p>
+                    The aggregate score favors the candidate using an extra
+                    training pool.
+                  </p>
+                </div>
+              </article>
+              <article>
+                <span class="review-index">02</span>
+                <div>
+                  <span class="mini-label">TRACE THE DATA</span>
+                  <h4>8 samples came from validation data</h4>
+                  <p>
+                    Review follows the added samples back to their provenance.
+                  </p>
+                </div>
+              </article>
+              <article>
+                <span class="review-index">03</span>
+                <div>
+                  <span class="mini-label">REVISE THE DECISION</span>
+                  <h4>Disclose the leakage. Keep the baseline.</h4>
+                  <p>
+                    The observed gain does not establish leakage-free
+                    generalization.
+                  </p>
+                </div>
+              </article>
+            </div>
+          </div>
+          <div class="case-topics">
+            <span>Also studied</span><span>Unclear objectives</span
+            ><span>Changed randomization</span><span>Unverified API calls</span
+            ><span>Unequal search budgets</span>
+          </div>
+          <p class="source-note case-note">
+            Five paired, illustrative case studies; not a separate aggregate
+            benchmark. See Table 2 and the review-harness appendix in the paper.
+          </p>
+        </div>
+      </section>
+      <section class="section wrap resources" id="resources">
+        <div class="resource-heading">
+          <h2>Resources</h2>
+          <p>
+            Read the paper, explore the implementation,<br />or evaluate your
+            own monitor on AgentMonBench.
+          </p>
+        </div>
+        <div class="resource-links">
+          <a href="assets/paper.pdf" target="_blank" rel="noopener"
+            ><span class="resource-number">01</span>
+            <div>
+              <h3>The paper</h3>
+              <p>Method, experiments, and case studies</p>
+            </div>
+            <span class="resource-type">PDF</span></a
+          ><a
+            href="https://github.com/zhk-lab/EBG"
+            target="_blank"
+            rel="noopener"
+            ><span class="resource-number">02</span>
+            <div>
+              <h3>The implementation</h3>
+              <p>EBG, evaluation, and reproduction guides</p>
+            </div>
+            <span class="resource-type">GITHUB</span></a
+          ><a
+            href="https://huggingface.co/datasets/ZhaoHongKang/AgentMonBench"
+            target="_blank"
+            rel="noopener"
+            ><span class="resource-number">03</span>
+            <div>
+              <h3>The benchmark</h3>
+              <p>300 examples, evaluation inputs, and annotations</p>
+            </div>
+            <span class="resource-type">DATA</span></a
+          >
+        </div>
+      </section>
+    </main>
+    <footer class="wrap footer">
+      <a class="brand" href="#top"
+        ><img src="favicon.svg" width="26" height="26" alt="" /><span
+          >EBG</span
+        ></a
+      >
+      <p>Evidence-Grounded Oversight for Long-Horizon Agents</p>
+      <a
+        href="https://github.com/zhk-lab/EBG/blob/main/LICENSE"
+        target="_blank"
+        rel="noopener"
+        >Code: MIT License</a
+      >
+    </footer>
+    <dialog
+      class="figure-dialog"
+      id="figure-dialog"
+      aria-labelledby="figure-dialog-title"
+      aria-describedby="figure-caption"
+    >
+      <div class="dialog-bar">
+        <span id="figure-dialog-title">EBG · Method overview</span
+        ><button id="close-figure" aria-label="Close figure">×</button>
+      </div>
+      <div class="dialog-image"><img id="expanded-figure" alt="" /></div>
+      <p id="figure-caption"></p>
+    </dialog>
+    <noscript
+      ><div class="noscript-note">
+        Enable JavaScript to explore task examples and sort results. The
+        complete experimental results are also available in
+        <a href="assets/main-results.csv">the results CSV</a> and
+        <a href="assets/paper.pdf">the paper</a>.
+      </div></noscript
+    >
+  </body>
+</html>
