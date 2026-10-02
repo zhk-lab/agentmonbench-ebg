@@ -1,0 +1,193 @@
+model,family,method,benchmark,metric,score
+GPT-5.6 Luna,OpenAI,Base,SpecGap,SF1,0.25
+GPT-5.6 Luna,OpenAI,Base,SpecGap,QQ,0.627
+GPT-5.6 Luna,OpenAI,Base,SpecGap,LF1,0.305
+GPT-5.6 Luna,OpenAI,Base,SilentSwap,LC,0.33
+GPT-5.6 Luna,OpenAI,Base,SilentSwap,CC,0.268
+GPT-5.6 Luna,OpenAI,Base,SilentSwap,LS,0.403
+GPT-5.6 Luna,OpenAI,Base,FeedbackTrace,VPA,0.46
+GPT-5.6 Luna,OpenAI,Base,FeedbackTrace,ESS,0.545
+GPT-5.6 Luna,OpenAI,Base,FeedbackTrace,EHR,0.53
+GPT-5.6 Luna,OpenAI,RepoGraph,SpecGap,SF1,0.241
+GPT-5.6 Luna,OpenAI,RepoGraph,SpecGap,QQ,0.587
+GPT-5.6 Luna,OpenAI,RepoGraph,SpecGap,LF1,0.27
+GPT-5.6 Luna,OpenAI,RepoGraph,SilentSwap,LC,0.208
+GPT-5.6 Luna,OpenAI,RepoGraph,SilentSwap,CC,0.193
+GPT-5.6 Luna,OpenAI,RepoGraph,SilentSwap,LS,0.293
+GPT-5.6 Luna,OpenAI,EBG,SpecGap,SF1,0.326
+GPT-5.6 Luna,OpenAI,EBG,SpecGap,QQ,0.722
+GPT-5.6 Luna,OpenAI,EBG,SpecGap,LF1,0.418
+GPT-5.6 Luna,OpenAI,EBG,SilentSwap,LC,0.333
+GPT-5.6 Luna,OpenAI,EBG,SilentSwap,CC,0.288
+GPT-5.6 Luna,OpenAI,EBG,SilentSwap,LS,0.455
+GPT-5.6 Luna,OpenAI,EBG,FeedbackTrace,VPA,0.485
+GPT-5.6 Luna,OpenAI,EBG,FeedbackTrace,ESS,0.56
+GPT-5.6 Luna,OpenAI,EBG,FeedbackTrace,EHR,0.57
+GPT-5.6 Terra,OpenAI,Base,SpecGap,SF1,0.275
+GPT-5.6 Terra,OpenAI,Base,SpecGap,QQ,0.689
+GPT-5.6 Terra,OpenAI,Base,SpecGap,LF1,0.309
+GPT-5.6 Terra,OpenAI,Base,SilentSwap,LC,0.413
+GPT-5.6 Terra,OpenAI,Base,SilentSwap,CC,0.583
+GPT-5.6 Terra,OpenAI,Base,SilentSwap,LS,0.417
+GPT-5.6 Terra,OpenAI,Base,FeedbackTrace,VPA,0.513
+GPT-5.6 Terra,OpenAI,Base,FeedbackTrace,ESS,0.588
+GPT-5.6 Terra,OpenAI,Base,FeedbackTrace,EHR,0.54
+GPT-5.6 Terra,OpenAI,RepoGraph,SpecGap,SF1,0.215
+GPT-5.6 Terra,OpenAI,RepoGraph,SpecGap,QQ,0.558
+GPT-5.6 Terra,OpenAI,RepoGraph,SpecGap,LF1,0.221
+GPT-5.6 Terra,OpenAI,RepoGraph,SilentSwap,LC,0.358
+GPT-5.6 Terra,OpenAI,RepoGraph,SilentSwap,CC,0.42
+GPT-5.6 Terra,OpenAI,RepoGraph,SilentSwap,LS,0.415
+GPT-5.6 Terra,OpenAI,EBG,SpecGap,SF1,0.392
+GPT-5.6 Terra,OpenAI,EBG,SpecGap,QQ,0.852
+GPT-5.6 Terra,OpenAI,EBG,SpecGap,LF1,0.462
+GPT-5.6 Terra,OpenAI,EBG,SilentSwap,LC,0.54
+GPT-5.6 Terra,OpenAI,EBG,SilentSwap,CC,0.603
+GPT-5.6 Terra,OpenAI,EBG,SilentSwap,LS,0.623
+GPT-5.6 Terra,OpenAI,EBG,FeedbackTrace,VPA,0.508
+GPT-5.6 Terra,OpenAI,EBG,FeedbackTrace,ESS,0.565
+GPT-5.6 Terra,OpenAI,EBG,FeedbackTrace,EHR,0.58
+GPT-5.6 Sol,OpenAI,Base,SpecGap,SF1,0.456
+GPT-5.6 Sol,OpenAI,Base,SpecGap,QQ,0.923
+GPT-5.6 Sol,OpenAI,Base,SpecGap,LF1,0.501
+GPT-5.6 Sol,OpenAI,Base,SilentSwap,LC,0.428
+GPT-5.6 Sol,OpenAI,Base,SilentSwap,CC,0.598
+GPT-5.6 Sol,OpenAI,Base,SilentSwap,LS,0.464
+GPT-5.6 Sol,OpenAI,Base,FeedbackTrace,VPA,0.48
+GPT-5.6 Sol,OpenAI,Base,FeedbackTrace,ESS,0.533
+GPT-5.6 Sol,OpenAI,Base,FeedbackTrace,EHR,0.55
+GPT-5.6 Sol,OpenAI,RepoGraph,SpecGap,SF1,0.41
+GPT-5.6 Sol,OpenAI,RepoGraph,SpecGap,QQ,0.843
+GPT-5.6 Sol,OpenAI,RepoGraph,SpecGap,LF1,0.445
+GPT-5.6 Sol,OpenAI,RepoGraph,SilentSwap,LC,0.388
+GPT-5.6 Sol,OpenAI,RepoGraph,SilentSwap,CC,0.463
+GPT-5.6 Sol,OpenAI,RepoGraph,SilentSwap,LS,0.459
+GPT-5.6 Sol,OpenAI,EBG,SpecGap,SF1,0.505
+GPT-5.6 Sol,OpenAI,EBG,SpecGap,QQ,0.959
+GPT-5.6 Sol,OpenAI,EBG,SpecGap,LF1,0.569
+GPT-5.6 Sol,OpenAI,EBG,SilentSwap,LC,0.57
+GPT-5.6 Sol,OpenAI,EBG,SilentSwap,CC,0.598
+GPT-5.6 Sol,OpenAI,EBG,SilentSwap,LS,0.671
+GPT-5.6 Sol,OpenAI,EBG,FeedbackTrace,VPA,0.493
+GPT-5.6 Sol,OpenAI,EBG,FeedbackTrace,ESS,0.585
+GPT-5.6 Sol,OpenAI,EBG,FeedbackTrace,EHR,0.61
+Claude Sonnet 5,Anthropic,Base,SpecGap,SF1,0.328
+Claude Sonnet 5,Anthropic,Base,SpecGap,QQ,0.785
+Claude Sonnet 5,Anthropic,Base,SpecGap,LF1,0.368
+Claude Sonnet 5,Anthropic,Base,SilentSwap,LC,0.188
+Claude Sonnet 5,Anthropic,Base,SilentSwap,CC,0.223
+Claude Sonnet 5,Anthropic,Base,SilentSwap,LS,0.294
+Claude Sonnet 5,Anthropic,Base,FeedbackTrace,VPA,0.378
+Claude Sonnet 5,Anthropic,Base,FeedbackTrace,ESS,0.45
+Claude Sonnet 5,Anthropic,Base,FeedbackTrace,EHR,0.48
+Claude Sonnet 5,Anthropic,RepoGraph,SpecGap,SF1,0.269
+Claude Sonnet 5,Anthropic,RepoGraph,SpecGap,QQ,0.697
+Claude Sonnet 5,Anthropic,RepoGraph,SpecGap,LF1,0.322
+Claude Sonnet 5,Anthropic,RepoGraph,SilentSwap,LC,0.163
+Claude Sonnet 5,Anthropic,RepoGraph,SilentSwap,CC,0.083
+Claude Sonnet 5,Anthropic,RepoGraph,SilentSwap,LS,0.258
+Claude Sonnet 5,Anthropic,EBG,SpecGap,SF1,0.331
+Claude Sonnet 5,Anthropic,EBG,SpecGap,QQ,0.806
+Claude Sonnet 5,Anthropic,EBG,SpecGap,LF1,0.409
+Claude Sonnet 5,Anthropic,EBG,SilentSwap,LC,0.258
+Claude Sonnet 5,Anthropic,EBG,SilentSwap,CC,0.268
+Claude Sonnet 5,Anthropic,EBG,SilentSwap,LS,0.425
+Claude Sonnet 5,Anthropic,EBG,FeedbackTrace,VPA,0.48
+Claude Sonnet 5,Anthropic,EBG,FeedbackTrace,ESS,0.573
+Claude Sonnet 5,Anthropic,EBG,FeedbackTrace,EHR,0.6
+DeepSeek-V4.1-Flash,DeepSeek,Base,SpecGap,SF1,0.376
+DeepSeek-V4.1-Flash,DeepSeek,Base,SpecGap,QQ,0.832
+DeepSeek-V4.1-Flash,DeepSeek,Base,SpecGap,LF1,0.459
+DeepSeek-V4.1-Flash,DeepSeek,Base,SilentSwap,LC,0.165
+DeepSeek-V4.1-Flash,DeepSeek,Base,SilentSwap,CC,0.125
+DeepSeek-V4.1-Flash,DeepSeek,Base,SilentSwap,LS,0.262
+DeepSeek-V4.1-Flash,DeepSeek,Base,FeedbackTrace,VPA,0.415
+DeepSeek-V4.1-Flash,DeepSeek,Base,FeedbackTrace,ESS,0.453
+DeepSeek-V4.1-Flash,DeepSeek,Base,FeedbackTrace,EHR,0.54
+DeepSeek-V4.1-Flash,DeepSeek,RepoGraph,SpecGap,SF1,0.336
+DeepSeek-V4.1-Flash,DeepSeek,RepoGraph,SpecGap,QQ,0.716
+DeepSeek-V4.1-Flash,DeepSeek,RepoGraph,SpecGap,LF1,0.388
+DeepSeek-V4.1-Flash,DeepSeek,RepoGraph,SilentSwap,LC,0.22
+DeepSeek-V4.1-Flash,DeepSeek,RepoGraph,SilentSwap,CC,0.178
+DeepSeek-V4.1-Flash,DeepSeek,RepoGraph,SilentSwap,LS,0.344
+DeepSeek-V4.1-Flash,DeepSeek,EBG,SpecGap,SF1,0.372
+DeepSeek-V4.1-Flash,DeepSeek,EBG,SpecGap,QQ,0.807
+DeepSeek-V4.1-Flash,DeepSeek,EBG,SpecGap,LF1,0.469
+DeepSeek-V4.1-Flash,DeepSeek,EBG,SilentSwap,LC,0.315
+DeepSeek-V4.1-Flash,DeepSeek,EBG,SilentSwap,CC,0.155
+DeepSeek-V4.1-Flash,DeepSeek,EBG,SilentSwap,LS,0.492
+DeepSeek-V4.1-Flash,DeepSeek,EBG,FeedbackTrace,VPA,0.48
+DeepSeek-V4.1-Flash,DeepSeek,EBG,FeedbackTrace,ESS,0.55
+DeepSeek-V4.1-Flash,DeepSeek,EBG,FeedbackTrace,EHR,0.6
+DeepSeek-V4-Pro,DeepSeek,Base,SpecGap,SF1,0.123
+DeepSeek-V4-Pro,DeepSeek,Base,SpecGap,QQ,0.308
+DeepSeek-V4-Pro,DeepSeek,Base,SpecGap,LF1,0.171
+DeepSeek-V4-Pro,DeepSeek,Base,SilentSwap,LC,0.185
+DeepSeek-V4-Pro,DeepSeek,Base,SilentSwap,CC,0.135
+DeepSeek-V4-Pro,DeepSeek,Base,SilentSwap,LS,0.288
+DeepSeek-V4-Pro,DeepSeek,Base,FeedbackTrace,VPA,0.258
+DeepSeek-V4-Pro,DeepSeek,Base,FeedbackTrace,ESS,0.345
+DeepSeek-V4-Pro,DeepSeek,Base,FeedbackTrace,EHR,0.34
+DeepSeek-V4-Pro,DeepSeek,RepoGraph,SpecGap,SF1,0.134
+DeepSeek-V4-Pro,DeepSeek,RepoGraph,SpecGap,QQ,0.357
+DeepSeek-V4-Pro,DeepSeek,RepoGraph,SpecGap,LF1,0.186
+DeepSeek-V4-Pro,DeepSeek,RepoGraph,SilentSwap,LC,0.163
+DeepSeek-V4-Pro,DeepSeek,RepoGraph,SilentSwap,CC,0.08
+DeepSeek-V4-Pro,DeepSeek,RepoGraph,SilentSwap,LS,0.281
+DeepSeek-V4-Pro,DeepSeek,EBG,SpecGap,SF1,0.218
+DeepSeek-V4-Pro,DeepSeek,EBG,SpecGap,QQ,0.547
+DeepSeek-V4-Pro,DeepSeek,EBG,SpecGap,LF1,0.36
+DeepSeek-V4-Pro,DeepSeek,EBG,SilentSwap,LC,0.23
+DeepSeek-V4-Pro,DeepSeek,EBG,SilentSwap,CC,0.16
+DeepSeek-V4-Pro,DeepSeek,EBG,SilentSwap,LS,0.408
+DeepSeek-V4-Pro,DeepSeek,EBG,FeedbackTrace,VPA,0.28
+DeepSeek-V4-Pro,DeepSeek,EBG,FeedbackTrace,ESS,0.365
+DeepSeek-V4-Pro,DeepSeek,EBG,FeedbackTrace,EHR,0.37
+Kimi K3,Moonshot AI,Base,SpecGap,SF1,0.494
+Kimi K3,Moonshot AI,Base,SpecGap,QQ,0.927
+Kimi K3,Moonshot AI,Base,SpecGap,LF1,0.497
+Kimi K3,Moonshot AI,Base,SilentSwap,LC,0.51
+Kimi K3,Moonshot AI,Base,SilentSwap,CC,0.69
+Kimi K3,Moonshot AI,Base,SilentSwap,LS,0.555
+Kimi K3,Moonshot AI,Base,FeedbackTrace,VPA,0.42
+Kimi K3,Moonshot AI,Base,FeedbackTrace,ESS,0.518
+Kimi K3,Moonshot AI,Base,FeedbackTrace,EHR,0.55
+Kimi K3,Moonshot AI,RepoGraph,SpecGap,SF1,0.443
+Kimi K3,Moonshot AI,RepoGraph,SpecGap,QQ,0.861
+Kimi K3,Moonshot AI,RepoGraph,SpecGap,LF1,0.419
+Kimi K3,Moonshot AI,RepoGraph,SilentSwap,LC,0.333
+Kimi K3,Moonshot AI,RepoGraph,SilentSwap,CC,0.545
+Kimi K3,Moonshot AI,RepoGraph,SilentSwap,LS,0.406
+Kimi K3,Moonshot AI,EBG,SpecGap,SF1,0.558
+Kimi K3,Moonshot AI,EBG,SpecGap,QQ,0.954
+Kimi K3,Moonshot AI,EBG,SpecGap,LF1,0.603
+Kimi K3,Moonshot AI,EBG,SilentSwap,LC,0.558
+Kimi K3,Moonshot AI,EBG,SilentSwap,CC,0.73
+Kimi K3,Moonshot AI,EBG,SilentSwap,LS,0.681
+Kimi K3,Moonshot AI,EBG,FeedbackTrace,VPA,0.505
+Kimi K3,Moonshot AI,EBG,FeedbackTrace,ESS,0.598
+Kimi K3,Moonshot AI,EBG,FeedbackTrace,EHR,0.61
+GLM-5.3,Z.ai,Base,SpecGap,SF1,0.481
+GLM-5.3,Z.ai,Base,SpecGap,QQ,0.887
+GLM-5.3,Z.ai,Base,SpecGap,LF1,0.498
+GLM-5.3,Z.ai,Base,SilentSwap,LC,0.51
+GLM-5.3,Z.ai,Base,SilentSwap,CC,0.678
+GLM-5.3,Z.ai,Base,SilentSwap,LS,0.56
+GLM-5.3,Z.ai,Base,FeedbackTrace,VPA,0.443
+GLM-5.3,Z.ai,Base,FeedbackTrace,ESS,0.463
+GLM-5.3,Z.ai,Base,FeedbackTrace,EHR,0.51
+GLM-5.3,Z.ai,RepoGraph,SpecGap,SF1,0.407
+GLM-5.3,Z.ai,RepoGraph,SpecGap,QQ,0.831
+GLM-5.3,Z.ai,RepoGraph,SpecGap,LF1,0.42
+GLM-5.3,Z.ai,RepoGraph,SilentSwap,LC,0.505
+GLM-5.3,Z.ai,RepoGraph,SilentSwap,CC,0.538
+GLM-5.3,Z.ai,RepoGraph,SilentSwap,LS,0.561
+GLM-5.3,Z.ai,EBG,SpecGap,SF1,0.526
+GLM-5.3,Z.ai,EBG,SpecGap,QQ,0.955
+GLM-5.3,Z.ai,EBG,SpecGap,LF1,0.581
+GLM-5.3,Z.ai,EBG,SilentSwap,LC,0.605
+GLM-5.3,Z.ai,EBG,SilentSwap,CC,0.71
+GLM-5.3,Z.ai,EBG,SilentSwap,LS,0.708
+GLM-5.3,Z.ai,EBG,FeedbackTrace,VPA,0.518
+GLM-5.3,Z.ai,EBG,FeedbackTrace,ESS,0.56
+GLM-5.3,Z.ai,EBG,FeedbackTrace,EHR,0.57

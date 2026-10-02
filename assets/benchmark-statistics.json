@@ -1,0 +1,912 @@
+{
+  "provenance": {
+    "script": "website/scripts/benchmark_statistics.py",
+    "sourceRoot": "data/prepared",
+    "scope": "100 frozen evaluation inputs per component; FeedbackTrace uses the complete pre-feedback Long view.",
+    "annotationFiles": "{component}/artifacts/hidden_gold/*.json",
+    "trajectoryFiles": "feedbacktrace/artifacts/visible_bundles/{inputId}/trace/model_input.json",
+    "eventDefinition": "One item in the released events array: a user prompt, an assistant response paragraph, or a tool call paired with its result.",
+    "quartileDefinition": "Inclusive quartiles: linear interpolation at (n - 1) × p in sorted event counts.",
+    "categoryDefinition": "Original annotation category keys are preserved; display labels only expand those keys.",
+    "paperCrossCheck": "SpecGAP category counts and SilentSwap mechanism counts match the manuscript benchmark-statistics figure. Trajectory counts are freshly aggregated from the frozen local inputs."
+  },
+  "paperInputTokens": {
+    "source": "Paper Table B1, page 15; LaTeX appendices/a_benchmark_details.tex, tab:benchmark-summary.",
+    "definition": "Low, Medium, and High are median input lengths of the three input-size groups. Mean is the arithmetic mean over all 100 examples in the component. Values are transcribed from the paper, not recalculated.",
+    "unit": "input tokens",
+    "components": [
+      {
+        "key": "specgap",
+        "label": "SpecGAP",
+        "mean": 22870.32,
+        "lowMedian": 10964,
+        "mediumMedian": 20363,
+        "highMedian": 32643
+      },
+      {
+        "key": "silentswap",
+        "label": "SilentSwap",
+        "mean": 22855.91,
+        "lowMedian": 12677,
+        "mediumMedian": 17956,
+        "highMedian": 31861.5
+      },
+      {
+        "key": "feedbacktrace",
+        "label": "FeedbackTrace",
+        "mean": 53942.98,
+        "lowMedian": 9468,
+        "mediumMedian": 28936,
+        "highMedian": 86138.5
+      }
+    ]
+  },
+  "composition": [
+    {
+      "key": "specgap",
+      "label": "SpecGAP",
+      "examples": 100,
+      "annotationCount": 484,
+      "annotationUnit": "omitted conditions"
+    },
+    {
+      "key": "silentswap",
+      "label": "SilentSwap",
+      "examples": 100,
+      "annotationCount": 500,
+      "annotationUnit": "semantic substitutions"
+    },
+    {
+      "key": "feedbacktrace",
+      "label": "FeedbackTrace",
+      "examples": 100,
+      "annotationCount": 100,
+      "annotationUnit": "verification points"
+    }
+  ],
+  "specgap": {
+    "categories": [
+      {
+        "key": "boundary_behavior",
+        "label": "Boundary behavior",
+        "count": 167
+      },
+      {
+        "key": "api_constraint",
+        "label": "API constraints",
+        "count": 130
+      },
+      {
+        "key": "data_flow",
+        "label": "Data flow",
+        "count": 95
+      },
+      {
+        "key": "dependency_choice",
+        "label": "Dependency choice",
+        "count": 46
+      },
+      {
+        "key": "evidence_boundary",
+        "label": "Evidence boundaries",
+        "count": 34
+      },
+      {
+        "key": "metric_or_eval",
+        "label": "Metrics & evaluation",
+        "count": 8
+      },
+      {
+        "key": "test_related",
+        "label": "Test-related conditions",
+        "count": 4
+      }
+    ]
+  },
+  "silentswap": {
+    "categories": [
+      {
+        "key": "input_validation_boundary",
+        "label": "Input validation",
+        "count": 102
+      },
+      {
+        "key": "ordering_precedence",
+        "label": "Ordering & precedence",
+        "count": 67
+      },
+      {
+        "key": "representation_normalization",
+        "label": "Representation & normalization",
+        "count": 63
+      },
+      {
+        "key": "default_null_fallback",
+        "label": "Defaults, nulls & fallbacks",
+        "count": 61
+      },
+      {
+        "key": "exception_error_handling",
+        "label": "Exception & error handling",
+        "count": 60
+      },
+      {
+        "key": "parsing_matching",
+        "label": "Parsing & matching",
+        "count": 58
+      },
+      {
+        "key": "state_identity_lifecycle",
+        "label": "State, identity & lifecycle",
+        "count": 58
+      },
+      {
+        "key": "dispatch_routing_aggregation",
+        "label": "Dispatch, routing & aggregation",
+        "count": 31
+      }
+    ]
+  },
+  "feedbacktrace": {
+    "eventComposition": [
+      {
+        "key": "tool_exchange",
+        "label": "Tool exchanges",
+        "count": 8642
+      },
+      {
+        "key": "assistant_response",
+        "label": "Assistant responses",
+        "count": 5095
+      },
+      {
+        "key": "user_prompt",
+        "label": "User prompts",
+        "count": 944
+      }
+    ],
+    "eventCountSummary": {
+      "total": 14681,
+      "min": 6,
+      "q1": 30.0,
+      "median": 57.0,
+      "q3": 149.25,
+      "max": 908,
+      "mean": 146.81
+    },
+    "eventCountHistogram": [
+      {
+        "label": "0–99",
+        "lowerInclusive": 0,
+        "upperExclusive": 100,
+        "count": 68
+      },
+      {
+        "label": "100–199",
+        "lowerInclusive": 100,
+        "upperExclusive": 200,
+        "count": 10
+      },
+      {
+        "label": "200–399",
+        "lowerInclusive": 200,
+        "upperExclusive": 400,
+        "count": 11
+      },
+      {
+        "label": "400–799",
+        "lowerInclusive": 400,
+        "upperExclusive": 800,
+        "count": 7
+      },
+      {
+        "label": "800+",
+        "lowerInclusive": 800,
+        "upperExclusive": null,
+        "count": 4
+      }
+    ],
+    "trajectories": [
+      {
+        "inputId": "ft_001_long",
+        "eventCount": 463,
+        "toolExchanges": 344,
+        "assistantResponses": 85,
+        "userPrompts": 34
+      },
+      {
+        "inputId": "ft_002_long",
+        "eventCount": 100,
+        "toolExchanges": 71,
+        "assistantResponses": 22,
+        "userPrompts": 7
+      },
+      {
+        "inputId": "ft_003_long",
+        "eventCount": 55,
+        "toolExchanges": 11,
+        "assistantResponses": 41,
+        "userPrompts": 3
+      },
+      {
+        "inputId": "ft_004_long",
+        "eventCount": 29,
+        "toolExchanges": 14,
+        "assistantResponses": 11,
+        "userPrompts": 4
+      },
+      {
+        "inputId": "ft_005_long",
+        "eventCount": 76,
+        "toolExchanges": 59,
+        "assistantResponses": 13,
+        "userPrompts": 4
+      },
+      {
+        "inputId": "ft_006_long",
+        "eventCount": 110,
+        "toolExchanges": 71,
+        "assistantResponses": 34,
+        "userPrompts": 5
+      },
+      {
+        "inputId": "ft_007_long",
+        "eventCount": 124,
+        "toolExchanges": 76,
+        "assistantResponses": 41,
+        "userPrompts": 7
+      },
+      {
+        "inputId": "ft_008_long",
+        "eventCount": 28,
+        "toolExchanges": 20,
+        "assistantResponses": 3,
+        "userPrompts": 5
+      },
+      {
+        "inputId": "ft_009_long",
+        "eventCount": 252,
+        "toolExchanges": 86,
+        "assistantResponses": 139,
+        "userPrompts": 27
+      },
+      {
+        "inputId": "ft_010_long",
+        "eventCount": 889,
+        "toolExchanges": 594,
+        "assistantResponses": 194,
+        "userPrompts": 101
+      },
+      {
+        "inputId": "ft_011_long",
+        "eventCount": 6,
+        "toolExchanges": 3,
+        "assistantResponses": 2,
+        "userPrompts": 1
+      },
+      {
+        "inputId": "ft_012_long",
+        "eventCount": 36,
+        "toolExchanges": 7,
+        "assistantResponses": 28,
+        "userPrompts": 1
+      },
+      {
+        "inputId": "ft_013_long",
+        "eventCount": 318,
+        "toolExchanges": 222,
+        "assistantResponses": 89,
+        "userPrompts": 7
+      },
+      {
+        "inputId": "ft_014_long",
+        "eventCount": 313,
+        "toolExchanges": 84,
+        "assistantResponses": 214,
+        "userPrompts": 15
+      },
+      {
+        "inputId": "ft_015_long",
+        "eventCount": 23,
+        "toolExchanges": 9,
+        "assistantResponses": 12,
+        "userPrompts": 2
+      },
+      {
+        "inputId": "ft_016_long",
+        "eventCount": 20,
+        "toolExchanges": 16,
+        "assistantResponses": 3,
+        "userPrompts": 1
+      },
+      {
+        "inputId": "ft_017_long",
+        "eventCount": 29,
+        "toolExchanges": 10,
+        "assistantResponses": 16,
+        "userPrompts": 3
+      },
+      {
+        "inputId": "ft_018_long",
+        "eventCount": 41,
+        "toolExchanges": 31,
+        "assistantResponses": 6,
+        "userPrompts": 4
+      },
+      {
+        "inputId": "ft_019_long",
+        "eventCount": 182,
+        "toolExchanges": 18,
+        "assistantResponses": 160,
+        "userPrompts": 4
+      },
+      {
+        "inputId": "ft_020_long",
+        "eventCount": 100,
+        "toolExchanges": 88,
+        "assistantResponses": 10,
+        "userPrompts": 2
+      },
+      {
+        "inputId": "ft_021_long",
+        "eventCount": 64,
+        "toolExchanges": 44,
+        "assistantResponses": 16,
+        "userPrompts": 4
+      },
+      {
+        "inputId": "ft_022_long",
+        "eventCount": 279,
+        "toolExchanges": 50,
+        "assistantResponses": 208,
+        "userPrompts": 21
+      },
+      {
+        "inputId": "ft_023_long",
+        "eventCount": 98,
+        "toolExchanges": 54,
+        "assistantResponses": 39,
+        "userPrompts": 5
+      },
+      {
+        "inputId": "ft_024_long",
+        "eventCount": 78,
+        "toolExchanges": 59,
+        "assistantResponses": 14,
+        "userPrompts": 5
+      },
+      {
+        "inputId": "ft_025_long",
+        "eventCount": 53,
+        "toolExchanges": 35,
+        "assistantResponses": 14,
+        "userPrompts": 4
+      },
+      {
+        "inputId": "ft_026_long",
+        "eventCount": 870,
+        "toolExchanges": 612,
+        "assistantResponses": 187,
+        "userPrompts": 71
+      },
+      {
+        "inputId": "ft_027_long",
+        "eventCount": 16,
+        "toolExchanges": 11,
+        "assistantResponses": 3,
+        "userPrompts": 2
+      },
+      {
+        "inputId": "ft_028_long",
+        "eventCount": 54,
+        "toolExchanges": 30,
+        "assistantResponses": 21,
+        "userPrompts": 3
+      },
+      {
+        "inputId": "ft_029_long",
+        "eventCount": 460,
+        "toolExchanges": 221,
+        "assistantResponses": 208,
+        "userPrompts": 31
+      },
+      {
+        "inputId": "ft_030_long",
+        "eventCount": 219,
+        "toolExchanges": 137,
+        "assistantResponses": 63,
+        "userPrompts": 19
+      },
+      {
+        "inputId": "ft_031_long",
+        "eventCount": 16,
+        "toolExchanges": 4,
+        "assistantResponses": 11,
+        "userPrompts": 1
+      },
+      {
+        "inputId": "ft_032_long",
+        "eventCount": 88,
+        "toolExchanges": 26,
+        "assistantResponses": 57,
+        "userPrompts": 5
+      },
+      {
+        "inputId": "ft_033_long",
+        "eventCount": 665,
+        "toolExchanges": 377,
+        "assistantResponses": 264,
+        "userPrompts": 24
+      },
+      {
+        "inputId": "ft_034_long",
+        "eventCount": 12,
+        "toolExchanges": 3,
+        "assistantResponses": 8,
+        "userPrompts": 1
+      },
+      {
+        "inputId": "ft_035_long",
+        "eventCount": 45,
+        "toolExchanges": 36,
+        "assistantResponses": 7,
+        "userPrompts": 2
+      },
+      {
+        "inputId": "ft_036_long",
+        "eventCount": 149,
+        "toolExchanges": 112,
+        "assistantResponses": 33,
+        "userPrompts": 4
+      },
+      {
+        "inputId": "ft_037_long",
+        "eventCount": 68,
+        "toolExchanges": 26,
+        "assistantResponses": 39,
+        "userPrompts": 3
+      },
+      {
+        "inputId": "ft_038_long",
+        "eventCount": 181,
+        "toolExchanges": 76,
+        "assistantResponses": 90,
+        "userPrompts": 15
+      },
+      {
+        "inputId": "ft_039_long",
+        "eventCount": 26,
+        "toolExchanges": 19,
+        "assistantResponses": 6,
+        "userPrompts": 1
+      },
+      {
+        "inputId": "ft_040_long",
+        "eventCount": 48,
+        "toolExchanges": 35,
+        "assistantResponses": 10,
+        "userPrompts": 3
+      },
+      {
+        "inputId": "ft_041_long",
+        "eventCount": 243,
+        "toolExchanges": 164,
+        "assistantResponses": 54,
+        "userPrompts": 25
+      },
+      {
+        "inputId": "ft_042_long",
+        "eventCount": 124,
+        "toolExchanges": 84,
+        "assistantResponses": 32,
+        "userPrompts": 8
+      },
+      {
+        "inputId": "ft_043_long",
+        "eventCount": 207,
+        "toolExchanges": 53,
+        "assistantResponses": 144,
+        "userPrompts": 10
+      },
+      {
+        "inputId": "ft_044_long",
+        "eventCount": 287,
+        "toolExchanges": 208,
+        "assistantResponses": 62,
+        "userPrompts": 17
+      },
+      {
+        "inputId": "ft_045_long",
+        "eventCount": 99,
+        "toolExchanges": 72,
+        "assistantResponses": 21,
+        "userPrompts": 6
+      },
+      {
+        "inputId": "ft_046_long",
+        "eventCount": 15,
+        "toolExchanges": 5,
+        "assistantResponses": 9,
+        "userPrompts": 1
+      },
+      {
+        "inputId": "ft_047_long",
+        "eventCount": 324,
+        "toolExchanges": 141,
+        "assistantResponses": 165,
+        "userPrompts": 18
+      },
+      {
+        "inputId": "ft_048_long",
+        "eventCount": 52,
+        "toolExchanges": 46,
+        "assistantResponses": 5,
+        "userPrompts": 1
+      },
+      {
+        "inputId": "ft_049_long",
+        "eventCount": 45,
+        "toolExchanges": 36,
+        "assistantResponses": 8,
+        "userPrompts": 1
+      },
+      {
+        "inputId": "ft_050_long",
+        "eventCount": 33,
+        "toolExchanges": 7,
+        "assistantResponses": 23,
+        "userPrompts": 3
+      },
+      {
+        "inputId": "ft_051_long",
+        "eventCount": 33,
+        "toolExchanges": 11,
+        "assistantResponses": 20,
+        "userPrompts": 2
+      },
+      {
+        "inputId": "ft_052_long",
+        "eventCount": 26,
+        "toolExchanges": 20,
+        "assistantResponses": 4,
+        "userPrompts": 2
+      },
+      {
+        "inputId": "ft_053_long",
+        "eventCount": 47,
+        "toolExchanges": 42,
+        "assistantResponses": 4,
+        "userPrompts": 1
+      },
+      {
+        "inputId": "ft_054_long",
+        "eventCount": 22,
+        "toolExchanges": 10,
+        "assistantResponses": 11,
+        "userPrompts": 1
+      },
+      {
+        "inputId": "ft_055_long",
+        "eventCount": 24,
+        "toolExchanges": 6,
+        "assistantResponses": 17,
+        "userPrompts": 1
+      },
+      {
+        "inputId": "ft_056_long",
+        "eventCount": 502,
+        "toolExchanges": 342,
+        "assistantResponses": 142,
+        "userPrompts": 18
+      },
+      {
+        "inputId": "ft_057_long",
+        "eventCount": 30,
+        "toolExchanges": 17,
+        "assistantResponses": 10,
+        "userPrompts": 3
+      },
+      {
+        "inputId": "ft_058_long",
+        "eventCount": 790,
+        "toolExchanges": 597,
+        "assistantResponses": 123,
+        "userPrompts": 70
+      },
+      {
+        "inputId": "ft_059_long",
+        "eventCount": 150,
+        "toolExchanges": 38,
+        "assistantResponses": 95,
+        "userPrompts": 17
+      },
+      {
+        "inputId": "ft_060_long",
+        "eventCount": 25,
+        "toolExchanges": 7,
+        "assistantResponses": 13,
+        "userPrompts": 5
+      },
+      {
+        "inputId": "ft_061_long",
+        "eventCount": 32,
+        "toolExchanges": 9,
+        "assistantResponses": 22,
+        "userPrompts": 1
+      },
+      {
+        "inputId": "ft_062_long",
+        "eventCount": 13,
+        "toolExchanges": 9,
+        "assistantResponses": 3,
+        "userPrompts": 1
+      },
+      {
+        "inputId": "ft_063_long",
+        "eventCount": 212,
+        "toolExchanges": 146,
+        "assistantResponses": 45,
+        "userPrompts": 21
+      },
+      {
+        "inputId": "ft_064_long",
+        "eventCount": 92,
+        "toolExchanges": 32,
+        "assistantResponses": 53,
+        "userPrompts": 7
+      },
+      {
+        "inputId": "ft_065_long",
+        "eventCount": 84,
+        "toolExchanges": 39,
+        "assistantResponses": 40,
+        "userPrompts": 5
+      },
+      {
+        "inputId": "ft_066_long",
+        "eventCount": 46,
+        "toolExchanges": 9,
+        "assistantResponses": 33,
+        "userPrompts": 4
+      },
+      {
+        "inputId": "ft_067_long",
+        "eventCount": 16,
+        "toolExchanges": 10,
+        "assistantResponses": 4,
+        "userPrompts": 2
+      },
+      {
+        "inputId": "ft_068_long",
+        "eventCount": 20,
+        "toolExchanges": 7,
+        "assistantResponses": 10,
+        "userPrompts": 3
+      },
+      {
+        "inputId": "ft_069_long",
+        "eventCount": 50,
+        "toolExchanges": 21,
+        "assistantResponses": 27,
+        "userPrompts": 2
+      },
+      {
+        "inputId": "ft_070_long",
+        "eventCount": 896,
+        "toolExchanges": 589,
+        "assistantResponses": 271,
+        "userPrompts": 36
+      },
+      {
+        "inputId": "ft_071_long",
+        "eventCount": 33,
+        "toolExchanges": 19,
+        "assistantResponses": 12,
+        "userPrompts": 2
+      },
+      {
+        "inputId": "ft_072_long",
+        "eventCount": 32,
+        "toolExchanges": 23,
+        "assistantResponses": 7,
+        "userPrompts": 2
+      },
+      {
+        "inputId": "ft_073_long",
+        "eventCount": 8,
+        "toolExchanges": 5,
+        "assistantResponses": 2,
+        "userPrompts": 1
+      },
+      {
+        "inputId": "ft_074_long",
+        "eventCount": 89,
+        "toolExchanges": 81,
+        "assistantResponses": 7,
+        "userPrompts": 1
+      },
+      {
+        "inputId": "ft_075_long",
+        "eventCount": 30,
+        "toolExchanges": 15,
+        "assistantResponses": 10,
+        "userPrompts": 5
+      },
+      {
+        "inputId": "ft_076_long",
+        "eventCount": 98,
+        "toolExchanges": 66,
+        "assistantResponses": 19,
+        "userPrompts": 13
+      },
+      {
+        "inputId": "ft_077_long",
+        "eventCount": 83,
+        "toolExchanges": 10,
+        "assistantResponses": 68,
+        "userPrompts": 5
+      },
+      {
+        "inputId": "ft_078_long",
+        "eventCount": 404,
+        "toolExchanges": 307,
+        "assistantResponses": 82,
+        "userPrompts": 15
+      },
+      {
+        "inputId": "ft_079_long",
+        "eventCount": 908,
+        "toolExchanges": 571,
+        "assistantResponses": 301,
+        "userPrompts": 36
+      },
+      {
+        "inputId": "ft_080_long",
+        "eventCount": 60,
+        "toolExchanges": 18,
+        "assistantResponses": 40,
+        "userPrompts": 2
+      },
+      {
+        "inputId": "ft_081_long",
+        "eventCount": 33,
+        "toolExchanges": 7,
+        "assistantResponses": 23,
+        "userPrompts": 3
+      },
+      {
+        "inputId": "ft_082_long",
+        "eventCount": 45,
+        "toolExchanges": 16,
+        "assistantResponses": 26,
+        "userPrompts": 3
+      },
+      {
+        "inputId": "ft_083_long",
+        "eventCount": 10,
+        "toolExchanges": 6,
+        "assistantResponses": 3,
+        "userPrompts": 1
+      },
+      {
+        "inputId": "ft_084_long",
+        "eventCount": 28,
+        "toolExchanges": 12,
+        "assistantResponses": 15,
+        "userPrompts": 1
+      },
+      {
+        "inputId": "ft_085_long",
+        "eventCount": 40,
+        "toolExchanges": 22,
+        "assistantResponses": 16,
+        "userPrompts": 2
+      },
+      {
+        "inputId": "ft_086_long",
+        "eventCount": 68,
+        "toolExchanges": 37,
+        "assistantResponses": 26,
+        "userPrompts": 5
+      },
+      {
+        "inputId": "ft_087_long",
+        "eventCount": 86,
+        "toolExchanges": 48,
+        "assistantResponses": 32,
+        "userPrompts": 6
+      },
+      {
+        "inputId": "ft_088_long",
+        "eventCount": 59,
+        "toolExchanges": 21,
+        "assistantResponses": 33,
+        "userPrompts": 5
+      },
+      {
+        "inputId": "ft_089_long",
+        "eventCount": 7,
+        "toolExchanges": 5,
+        "assistantResponses": 1,
+        "userPrompts": 1
+      },
+      {
+        "inputId": "ft_090_long",
+        "eventCount": 68,
+        "toolExchanges": 24,
+        "assistantResponses": 42,
+        "userPrompts": 2
+      },
+      {
+        "inputId": "ft_091_long",
+        "eventCount": 111,
+        "toolExchanges": 47,
+        "assistantResponses": 59,
+        "userPrompts": 5
+      },
+      {
+        "inputId": "ft_092_long",
+        "eventCount": 26,
+        "toolExchanges": 8,
+        "assistantResponses": 14,
+        "userPrompts": 4
+      },
+      {
+        "inputId": "ft_093_long",
+        "eventCount": 658,
+        "toolExchanges": 390,
+        "assistantResponses": 223,
+        "userPrompts": 45
+      },
+      {
+        "inputId": "ft_094_long",
+        "eventCount": 12,
+        "toolExchanges": 5,
+        "assistantResponses": 6,
+        "userPrompts": 1
+      },
+      {
+        "inputId": "ft_095_long",
+        "eventCount": 50,
+        "toolExchanges": 31,
+        "assistantResponses": 16,
+        "userPrompts": 3
+      },
+      {
+        "inputId": "ft_096_long",
+        "eventCount": 47,
+        "toolExchanges": 6,
+        "assistantResponses": 38,
+        "userPrompts": 3
+      },
+      {
+        "inputId": "ft_097_long",
+        "eventCount": 49,
+        "toolExchanges": 20,
+        "assistantResponses": 26,
+        "userPrompts": 3
+      },
+      {
+        "inputId": "ft_098_long",
+        "eventCount": 67,
+        "toolExchanges": 54,
+        "assistantResponses": 6,
+        "userPrompts": 7
+      },
+      {
+        "inputId": "ft_099_long",
+        "eventCount": 202,
+        "toolExchanges": 166,
+        "assistantResponses": 31,
+        "userPrompts": 5
+      },
+      {
+        "inputId": "ft_100_long",
+        "eventCount": 48,
+        "toolExchanges": 24,
+        "assistantResponses": 20,
+        "userPrompts": 4
+      }
+    ]
+  }
+}
