@@ -9,6 +9,11 @@ The opening figure is exported from the paper's
 and results remain in their respective sections; the Codex harness guide sits
 near the end, followed by Resources as the final section.
 
+The harness guide uses the public `zhk-lab/EBG` clone URL (which currently
+resolves to the same repository as `zhk-lab/BEG`). It includes a Codex hook
+support check so an older CLI on `PATH` does not silently defeat the setup.
+Keep its commands aligned with `harness/case_studies/README.md` in that repo.
+
 Run the browser checks with `node tests/verify.mjs` after making Playwright
 available. Set `PLAYWRIGHT_PATH` to an existing installation when needed.
 Windows uses Microsoft Edge; `BROWSER_EXECUTABLE_PATH` can select another browser.

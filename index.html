@@ -770,19 +770,31 @@
             Start with one of the paper's five research cases.</p>
         </div>
         <p class="harness-prerequisites">
-          <strong>Before you start</strong> · Python 3.11+ and an authenticated
-          Codex CLI with hook support. Run the commands from the EBG repository.
+          <strong>Before you start</strong> · Python 3.11+, Git, Node.js/npm, and a Codex CLI
+          with hook support. Use your Python environment for all commands below.
         </p>
         <ol class="harness-steps">
           <li>
             <div class="harness-step-copy">
+              <h3>Check Codex</h3>
+              <p>Install or update with <code>npm install -g @openai/codex@latest</code>,
+                then sign in with <code>codex login</code>. The hook-support check
+                below must succeed.</p>
+            </div>
+            <pre tabindex="0" aria-label="Check Codex CLI and hook support"><code>codex --version
+codex exec --dangerously-bypass-hook-trust --help
+codex login status</code></pre>
+          </li>
+          <li>
+            <div class="harness-step-copy">
               <h3>Install</h3>
               <p>Clone the code and install the standalone harness in your
-                Python environment.</p>
+                Python environment. A virtual environment is recommended.</p>
             </div>
             <pre tabindex="0" aria-label="Clone EBG and install the harness"><code>git clone https://github.com/zhk-lab/EBG.git
 cd EBG
-python -m pip install -e ./harness</code></pre>
+python -m pip install -e "./harness[case-studies]"
+python -m codex_harness --help</code></pre>
           </li>
           <li>
             <div class="harness-step-copy">
@@ -797,9 +809,12 @@ python -m pip install -e ./harness</code></pre>
               <h3>Run with review</h3>
               <p>Launch Codex with the generated integration. Use a new
                 <code>--round</code> for a fresh run, or <code>--model</code>
-                to select an available model.</p>
+                to select an available model. If several Codex versions are
+                installed, use <code>--codex /path/to/codex</code> to select
+                the executable that passed the check above. The ambiguity case pauses
+                to ask for a metric priority before selecting a result.</p>
             </div>
-            <pre tabindex="0" aria-label="Run the ambiguity case with the harness"><code>python harness/case_studies/run.py 01_ambiguity --round r1</code></pre>
+            <pre tabindex="0" aria-label="Run the ambiguity case with the harness"><code>python harness/case_studies/run.py 01_ambiguity --round r1 --model gpt-6-luna --effort low</code></pre>
           </li>
         </ol>
         <div class="harness-workflow">
@@ -818,7 +833,9 @@ python -m pip install -e ./harness</code></pre>
             <p>Merge the generated <code>config.toml</code> MCP entry into your
               workspace's <code>.codex/config.toml</code>, place the generated
               skills in <code>.agents/skills/</code>, and load the generated
-              <code>hooks.json</code> with hooks enabled in Codex.
+              <code>hooks.json</code> in <code>.codex/</code>. Start Codex from
+              that workspace with <code>codex -c features.hooks=true</code>
+              and approve the project hooks when prompted.
               Setup generates files; the case runner above performs the
               integration for the example workspace.</p>
             <p>See the <a href="https://github.com/zhk-lab/EBG/tree/main/harness"
