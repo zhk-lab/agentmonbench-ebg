@@ -128,31 +128,32 @@
           </figcaption>
         </figure>
         <div class="motivation-copy">
-          <h2>Delegation still needs oversight.</h2>
-          <p>
-            In the example above, an agent excludes incomplete records before
-            analyzing the data. That choice changes which population the analysis
-            represents and can affect how the results should be interpreted.
-            The decision may be reasonable, but the user still needs to understand
-            its implications and judge whether it serves the intended goal.
-          </p>
+          <h2>Delegation needs oversight.</h2>
           <p>
             As agents take on longer workflows, users move from making each
-            decision to overseeing execution. Delegation does not remove their
-            responsibility for those choices. Yet the evidence needed to assess
-            them is scattered across messages, code, tool results, and
-            intermediate artifacts, making consequential decisions difficult
-            to identify and verify.
+            decision themselves to overseeing execution. They still need to judge
+            whether the agent’s choices serve their goals. Even reasonable choices
+            can change task outcomes or how results should be interpreted, making
+            them worth user verification.
           </p>
           <p>
-            We therefore study monitors that surface consequential decisions and
-            locate evidence for user verification. <strong>AgentMonBench</strong>
-            evaluates these abilities in software-engineering tasks, covering
-            requirement–behavior alignment and awareness of consequential choices.
-            To support these judgments, the
+            Yet following every action becomes difficult as workflows grow.
+            Evidence is scattered across messages, code, tool results, and
+            intermediate artifacts, leaving users to reconstruct what happened
+            and why it matters. Effective oversight therefore requires identifying
+            consequential decisions and connecting them to the evidence users
+            need to assess their implications.
+          </p>
+          <p>
+            <strong>AgentMonBench</strong> evaluates these needs in
+            software-engineering tasks along two complementary dimensions:
+            alignment between requirements and behavior, and awareness and
+            verification of consequential decisions. To support these judgments,
+            the
             <strong>Evidence-Grounded Behavior Graph (EBG)</strong> organizes
-            source-linked evidence into behaviors and relationships, helping
-            monitors interpret decisions in context.
+            source-linked evidence around observed behaviors and their
+            relationships, helping monitors connect the agent’s choices to user
+            requirements and potential consequences.
           </p>
         </div>
       </section>
