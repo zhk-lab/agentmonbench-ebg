@@ -272,8 +272,11 @@ img {
   margin: 28px auto 0;
 }
 .stats-strip > div {
+  --stat-accent: #4a6274;
   border: 1px solid #d8d8d8;
+  border-top: 3px solid var(--stat-accent);
   border-radius: 8px;
+  background: #f6f8fa;
   padding: 18px 10px;
   display: flex;
   flex-direction: column;
@@ -281,7 +284,20 @@ img {
   justify-content: center;
   gap: 6px;
 }
+.stats-strip > .stat-specgap {
+  --stat-accent: #3b6fb6;
+  background: #f4f7fc;
+}
+.stats-strip > .stat-silentswap {
+  --stat-accent: #237e69;
+  background: #f2f9f6;
+}
+.stats-strip > .stat-feedbacktrace {
+  --stat-accent: #a45a25;
+  background: #fff8f1;
+}
 .stats-strip strong {
+  color: var(--stat-accent);
   font-size: 1.65rem;
   font-weight: 600;
   line-height: 1.25;
@@ -292,7 +308,7 @@ img {
 }
 .stats-strip small {
   font-size: 0.8rem;
-  color: #858585;
+  color: var(--stat-accent);
 }
 
 /* Section navigation sits below the paper introduction. */
@@ -1086,13 +1102,21 @@ tbody tr:last-child td {
 .case-section {
   padding-block: 48px;
 }
+.case-section h2 {
+  color: #315a7d;
+}
 .case-card {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  border: 1px solid #ddd;
+  border: 1px solid #d4e0e9;
+  border-top: 3px solid #8eaccf;
   border-radius: 8px;
+  background: #f8fafc;
   gap: 45px;
   padding: 32px;
+}
+.case-copy .tag {
+  color: #3b6fb6;
 }
 .case-copy h3 {
   font-size: 1.7rem;
@@ -1105,10 +1129,25 @@ tbody tr:last-child td {
   margin-bottom: 22px;
 }
 .case-copy p strong {
-  color: #4a6274;
+  color: #315a7d;
 }
 .case-copy .button {
   font-size: 0.9rem;
+  background: #3b6f99;
+  border-color: #3b6f99;
+}
+.case-copy .button:hover {
+  background: #315d82;
+  border-color: #315d82;
+}
+.review-observation {
+  --review-accent: #a25f28;
+}
+.review-evidence {
+  --review-accent: #3b6fb6;
+}
+.review-resolution {
+  --review-accent: #25816c;
 }
 .review-flow article {
   display: flex;
@@ -1120,20 +1159,21 @@ tbody tr:last-child td {
   padding-top: 19px;
 }
 .review-index {
-  color: #8293a1;
+  color: var(--review-accent);
   width: 24px;
   flex-shrink: 0;
   font-size: 0.8rem;
   padding-top: 3px;
 }
 .review-flow h4 {
+  color: var(--review-accent);
   font-size: 1.07rem;
   margin: 5px 0 8px;
   line-height: 1.35;
 }
 .review-flow p {
   font-size: 0.93rem;
-  color: #777;
+  color: #666;
 }
 .case-topics {
   display: flex;

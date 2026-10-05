@@ -85,7 +85,8 @@ try {
   check(alignment.includes("Alignment between requirements and behavior") && alignment.includes("SpecGAP") && alignment.includes("SilentSwap"), "Alignment dimension covers both repository benchmarks");
   check(decisions.includes("Awareness and verification of consequential decisions") && decisions.includes("FeedbackTrace"), "Decision-verification dimension covers FeedbackTrace");
   check(alignment.includes("Input-side") && alignment.includes("Output-side"), "Requirement gaps and behavior deviations show input and output coverage");
-  check(await page.locator("main section").last().getAttribute("id") === "harness", "Harness installation and usage are the final section");
+  check(await page.locator("main section").last().getAttribute("id") === "resources", "Resources is the final section");
+  check(await page.locator("#resources").evaluate((section) => section.previousElementSibling?.id === "harness"), "Harness installation and usage immediately precede Resources");
   check(await page.locator("#harness pre").count() > 0, "Harness section includes runnable commands");
   await page.locator(".harness-custom summary").click();
   check(await page.locator(".harness-custom").evaluate((details) => details.open), "Custom harness setup can be expanded");
@@ -135,6 +136,7 @@ try {
     await page.setViewportSize({ width, height: width < 600 ? 844 : 1100 });
     await page.evaluate(async () => {
       scrollTo(0, 0);
+      await new Promise(requestAnimationFrame);
       await Promise.all([...document.images].filter((image) => image.hasAttribute("src")).map((image) => image.decode()));
     });
     check(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), `No page overflow at ${width}px`);
@@ -146,7 +148,7 @@ try {
     }
     if (width === 1440 || width === 390) {
       const name = width === 1440 ? "desktop" : "mobile";
-      for (const [section, selector] of [["hero", ".hero"], ["dimensions", ".oversight-dimensions"], ["harness", "#harness"]]) {
+      for (const [section, selector] of [["hero", ".hero"], ["dimensions", ".oversight-dimensions"], ["stats", ".stats-strip"], ["case-study", "#case-study"], ["harness", "#harness"]]) {
         await page.locator(selector).screenshot({
           path: path.join(qa, `${name}-${section}.png`),
           style: ".skip-link { visibility: hidden; }",
@@ -160,7 +162,7 @@ try {
   check(await page.locator(".menu-toggle").getAttribute("aria-expanded") === "true", "Mobile navigation opens");
   await page.locator('.nav-links a[href="#harness"]').click();
   check(await page.locator(".menu-toggle").getAttribute("aria-expanded") === "false", "Mobile navigation closes after selecting the harness");
-  check(new URL(page.url()).hash === "#harness", "Navigation reaches the final harness tutorial");
+  check(new URL(page.url()).hash === "#harness", "Navigation reaches the harness tutorial");
   check(errors.length === 0, `No runtime or resource errors: ${errors.join(", ")}`);
   console.log(JSON.stringify({ passed: checks, viewports, errors, screenshots: qa }, null, 2));
 } finally {

@@ -269,9 +269,9 @@
           </div>
           <div class="stats-strip">
             <div><strong>300</strong><span>evaluation instances</span><small>100 per task</small></div>
-            <div><strong>484</strong><span>omitted requirements</span><small>SpecGAP</small></div>
-            <div><strong>500</strong><span>behavior substitutions</span><small>SilentSwap</small></div>
-            <div><strong>100</strong><span>pre-feedback trajectories</span><small>FeedbackTrace</small></div>
+            <div class="stat-specgap"><strong>484</strong><span>omitted requirements</span><small>SpecGAP</small></div>
+            <div class="stat-silentswap"><strong>500</strong><span>behavior substitutions</span><small>SilentSwap</small></div>
+            <div class="stat-feedbacktrace"><strong>100</strong><span>pre-feedback trajectories</span><small>FeedbackTrace</small></div>
           </div>
           <div class="statistics-grid" id="statistics">
             <figure class="statistic-figure">
@@ -716,7 +716,7 @@
               >
             </div>
             <div class="review-flow">
-              <article>
+              <article class="review-observation">
                 <span class="review-index">01</span>
                 <div>
                   <span class="mini-label">OBSERVED GAIN</span>
@@ -727,7 +727,7 @@
                   </p>
                 </div>
               </article>
-              <article>
+              <article class="review-evidence">
                 <span class="review-index">02</span>
                 <div>
                   <span class="mini-label">TRACE THE DATA</span>
@@ -737,7 +737,7 @@
                   </p>
                 </div>
               </article>
-              <article>
+              <article class="review-resolution">
                 <span class="review-index">03</span>
                 <div>
                   <span class="mini-label">REVISE THE DECISION</span>
@@ -759,45 +759,6 @@
             Five paired, illustrative case studies; not a separate aggregate
             benchmark. See Table 2 and the review-harness appendix in the paper.
           </p>
-        </div>
-      </section>
-      <section class="section wrap resources" id="resources">
-        <div class="resource-heading">
-          <h2>Resources</h2>
-          <p>
-            Read the paper, explore the implementation,<br />or evaluate your
-            own monitor on AgentMonBench.
-          </p>
-        </div>
-        <div class="resource-links">
-          <a href="assets/paper.pdf" target="_blank" rel="noopener"
-            ><span class="resource-number">01</span>
-            <div>
-              <h3>The paper</h3>
-              <p>Method, experiments, and case studies</p>
-            </div>
-            <span class="resource-type">PDF</span></a
-          ><a
-            href="https://github.com/zhk-lab/EBG"
-            target="_blank"
-            rel="noopener"
-            ><span class="resource-number">02</span>
-            <div>
-              <h3>The implementation</h3>
-              <p>EBG, evaluation, and reproduction guides</p>
-            </div>
-            <span class="resource-type">GITHUB</span></a
-          ><a
-            href="https://huggingface.co/datasets/ZhaoHongKang/AgentMonBench"
-            target="_blank"
-            rel="noopener"
-            ><span class="resource-number">03</span>
-            <div>
-              <h3>The benchmark</h3>
-              <p>300 examples, evaluation inputs, and annotations</p>
-            </div>
-            <span class="resource-type">DATA</span></a
-          >
         </div>
       </section>
       <section class="section wrap harness-section" id="harness" aria-labelledby="harness-title">
@@ -872,6 +833,45 @@ python -m pip install -e ./harness</code></pre>
             target="_blank" rel="noopener">Review workflow ↗</a>
           <a href="https://github.com/zhk-lab/EBG/tree/main/harness/case_studies"
             target="_blank" rel="noopener">All five cases ↗</a>
+        </div>
+      </section>
+      <section class="section wrap resources" id="resources">
+        <div class="resource-heading">
+          <h2>Resources</h2>
+          <p>
+            Read the paper, explore the implementation,<br /> or evaluate your
+            own monitor on AgentMonBench.
+          </p>
+        </div>
+        <div class="resource-links">
+          <a href="assets/paper.pdf" target="_blank" rel="noopener"
+            ><span class="resource-number">01</span>
+            <div>
+              <h3>The paper</h3>
+              <p>Method, experiments, and case studies</p>
+            </div>
+            <span class="resource-type">PDF</span></a
+          ><a
+            href="https://github.com/zhk-lab/EBG"
+            target="_blank"
+            rel="noopener"
+            ><span class="resource-number">02</span>
+            <div>
+              <h3>The implementation</h3>
+              <p>EBG, evaluation, and reproduction guides</p>
+            </div>
+            <span class="resource-type">GITHUB</span></a
+          ><a
+            href="https://huggingface.co/datasets/ZhaoHongKang/AgentMonBench"
+            target="_blank"
+            rel="noopener"
+            ><span class="resource-number">03</span>
+            <div>
+              <h3>The benchmark</h3>
+              <p>300 examples, evaluation inputs, and annotations</p>
+            </div>
+            <span class="resource-type">DATA</span></a
+          >
         </div>
       </section>
     </main>
