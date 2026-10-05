@@ -22,7 +22,7 @@
     <script src="app.js" defer></script>
   </head>
   <body>
-    <a class="skip-link" href="#overview">Skip to content</a>
+    <a class="skip-link" href="#motivation">Skip to content</a>
 
     <main id="top">
       <section class="hero wrap" aria-labelledby="hero-title">
@@ -103,37 +103,55 @@
             ><span aria-hidden="true">▤</span>Leaderboard</a
           >
         </div>
+        <div class="motivation-lead" id="motivation">
+          <h2>Delegation still needs oversight.</h2>
+          <p>
+            Agents can modify repositories, replicate research, and analyze data
+            over long workflows. Users become supervisors, but the volume of
+            agent activity can exceed what they can follow and evaluate.
+          </p>
+        </div>
         <figure class="hero-paper-figure">
           <button
             class="paper-preview"
             type="button"
-            data-figure="assets/benchmark-examples.webp"
-            data-title="AgentMonBench · Illustrative examples"
-            data-caption="Illustrative examples from the paper: an omitted scoring rule, an undisclosed metric change, and a cleanup decision that risks deleting saved data."
-            aria-label="Expand the AgentMonBench overview figure"
+            data-figure="assets/oversight-motivation.webp"
+            data-title="Figure 1 · User oversight in long-horizon workflows"
+            data-caption="An illustrative research workflow links a data-exclusion decision to its implications and supporting evidence. AgentMonBench evaluates these oversight needs in software engineering; EBG organizes evidence for monitoring."
+            aria-label="Expand Figure 1: user oversight in long-horizon workflows"
           >
             <img
-              src="assets/benchmark-examples.webp"
+              src="assets/oversight-motivation.webp"
               width="2400"
-              height="1350"
+              height="1092"
               fetchpriority="high"
-              alt="Three AgentMonBench examples: SpecGAP asks how unanswered questions should be scored; SilentSwap exposes a switch from exact match to semantic similarity; FeedbackTrace surfaces a data-retention decision before user feedback."
+              alt="An illustrative research workflow shows how excluding incomplete records affects an analysis, and how a monitor connects the decision to its consequences and supporting evidence for user verification."
             />
           </button>
           <figcaption>
-            <strong
-              >What should a monitor bring to the user's attention?</strong
-            >
-            AgentMonBench studies missing requirements, silent behavior changes,
-            and decisions that need verification.
+            <strong>Figure 1. User oversight in long-horizon workflows.</strong>
+            An illustrative research example connects a data-exclusion decision
+            to its implications and supporting evidence.
             <span>Click the figure to enlarge.</span>
           </figcaption>
         </figure>
-        <div class="stats-strip">
-          <div><strong>300</strong><span>evaluation instances</span><small>100 per task</small></div>
-          <div><strong>484</strong><span>omitted requirements</span><small>SpecGAP</small></div>
-          <div><strong>500</strong><span>behavior substitutions</span><small>SilentSwap</small></div>
-          <div><strong>100</strong><span>pre-feedback trajectories</span><small>FeedbackTrace</small></div>
+        <div class="motivation-copy">
+          <p>
+            Changing an evaluation criterion can alter a research conclusion;
+            dropping incomplete records can change the population an analysis
+            represents. Even reasonable choices may need user judgment, yet
+            their evidence is scattered across messages, tool results, and
+            intermediate artifacts.
+          </p>
+          <p class="research-question">
+            Which consequential decisions warrant user verification,
+            and what evidence helps users understand their implications?
+          </p>
+          <p>
+            <strong>AgentMonBench</strong> evaluates these oversight needs.
+            <strong>EBG</strong> organizes behavioral evidence so monitors can
+            connect decisions to the context users need to assess them.
+          </p>
         </div>
       </section>
       <header class="site-header">
@@ -156,6 +174,7 @@
             <a href="#benchmark">Benchmark</a><a href="#method">Method</a
             ><a href="#results">Leaderboard</a
             ><a href="#case-study">In practice</a
+            ><a href="#harness">Harness</a
             ><a
               class="nav-code"
               href="https://github.com/zhk-lab/EBG"
@@ -211,9 +230,50 @@
               <h2>AgentMonBench</h2>
             </div>
             <p>
-              Three complementary oversight tasks. 100 instances each.
-              From missing requirements to silent changes and consequential decisions.
+              Two complementary dimensions, three tasks, 100 instances each.
+              From input-side requirement gaps to output-side behavior changes
+              and consequential decisions during execution.
             </p>
+          </div>
+          <div class="oversight-dimensions" id="oversight-dimensions">
+            <article class="dimension-card">
+              <span class="statistic-kicker">01 / REQUIREMENTS &amp; BEHAVIOR</span>
+              <h3>Alignment between requirements and behavior</h3>
+              <p>Are important requirements missing, or does the implementation
+                diverge from what the user specified?</p>
+              <dl class="dimension-tasks">
+                <div>
+                  <dt>SpecGAP <span>Input-side gaps</span></dt>
+                  <dd>Find consequential repository behaviors left unspecified
+                    in incomplete requirements.</dd>
+                </div>
+                <div>
+                  <dt>SilentSwap <span>Output-side deviations</span></dt>
+                  <dd>Detect semantic changes from documented behavior,
+                    even when existing tests pass.</dd>
+                </div>
+              </dl>
+            </article>
+            <article class="dimension-card dimension-decisions">
+              <span class="statistic-kicker">02 / DECISIONS &amp; CONSEQUENCES</span>
+              <h3>Awareness and verification of consequential decisions</h3>
+              <p>Which autonomous choices need user judgment, and what evidence
+                reveals their implications?</p>
+              <dl class="dimension-tasks">
+                <div>
+                  <dt>FeedbackTrace <span>Decisions during execution</span></dt>
+                  <dd>Surface consequential choices in real interactions
+                    before the user intervenes. Later feedback defines the
+                    target; the monitor sees only the preceding history.</dd>
+                </div>
+              </dl>
+            </article>
+          </div>
+          <div class="stats-strip">
+            <div><strong>300</strong><span>evaluation instances</span><small>100 per task</small></div>
+            <div><strong>484</strong><span>omitted requirements</span><small>SpecGAP</small></div>
+            <div><strong>500</strong><span>behavior substitutions</span><small>SilentSwap</small></div>
+            <div><strong>100</strong><span>pre-feedback trajectories</span><small>FeedbackTrace</small></div>
           </div>
           <div class="statistics-grid" id="statistics">
             <figure class="statistic-figure">
@@ -314,6 +374,21 @@
             <h3>Three Oversight Tasks</h3>
             <p>Identify the consequential decision. Find the evidence behind it.</p>
           </div>
+          <figure class="hero-paper-figure benchmark-examples">
+            <button class="paper-preview" type="button"
+              data-figure="assets/benchmark-examples.webp"
+              data-title="AgentMonBench · Illustrative examples"
+              data-caption="An omitted scoring rule in SpecGAP, an undisclosed metric change in SilentSwap, and a cleanup decision that risks deleting saved data in FeedbackTrace. Later user feedback is excluded from the monitor's input."
+              aria-label="Expand the three AgentMonBench examples">
+              <img src="assets/benchmark-examples.webp" width="2400" height="1350" loading="lazy"
+                alt="SpecGAP: an omitted scoring rule. SilentSwap: exact match replaced with semantic similarity. FeedbackTrace: session cleanup risks deleting saved data." />
+            </button>
+            <figcaption>
+              <strong>From requirements to behavior to consequential choices.</strong>
+              Three illustrative examples from the paper. Click to enlarge,
+              or explore each task below.
+            </figcaption>
+          </figure>
           <div
             class="benchmark-tabs"
             role="tablist"
@@ -410,10 +485,10 @@
             </div>
           </div>
           <div class="benchmark-note">
-            <span>Two complementary dimensions</span>
+            <span>Across both dimensions</span>
             <p>
-              Requirement–behavior alignment <span>+</span> Awareness of
-              consequential autonomous decisions
+              Identify the decision <span>+</span> Locate supporting evidence
+              <span>+</span> Support user verification
             </p>
           </div>
           <div class="benchmark-figures" aria-label="Figures from the paper">
@@ -725,6 +800,80 @@
             </div>
             <span class="resource-type">DATA</span></a
           >
+        </div>
+      </section>
+      <section class="section wrap harness-section" id="harness" aria-labelledby="harness-title">
+        <div class="section-heading">
+          <h2 id="harness-title">Use the Codex Review Harness</h2>
+          <p>Bring evidence-grounded review into a working agent session.
+            Start with one of the paper's five research cases.</p>
+        </div>
+        <p class="harness-prerequisites">
+          <strong>Before you start</strong> · Python 3.11+ and an authenticated
+          Codex CLI with hook support. Run the commands from the EBG repository.
+        </p>
+        <ol class="harness-steps">
+          <li>
+            <div class="harness-step-copy">
+              <h3>Install</h3>
+              <p>Clone the code and install the standalone harness in your
+                Python environment.</p>
+            </div>
+            <pre tabindex="0" aria-label="Clone EBG and install the harness"><code>git clone https://github.com/zhk-lab/EBG.git
+cd EBG
+python -m pip install -e ./harness</code></pre>
+          </li>
+          <li>
+            <div class="harness-step-copy">
+              <h3>Prepare a case</h3>
+              <p>Create an isolated workspace with MCP tools, hooks, and
+                review skills installed.</p>
+            </div>
+            <pre tabindex="0" aria-label="Prepare the ambiguity case"><code>python harness/case_studies/prepare.py --install --round r1 --case 01_ambiguity</code></pre>
+          </li>
+          <li>
+            <div class="harness-step-copy">
+              <h3>Run with review</h3>
+              <p>Launch Codex with the generated integration. Use a new
+                <code>--round</code> for a fresh run, or <code>--model</code>
+                to select an available model.</p>
+            </div>
+            <pre tabindex="0" aria-label="Run the ambiguity case with the harness"><code>python harness/case_studies/run.py 01_ambiguity --round r1</code></pre>
+          </li>
+        </ol>
+        <div class="harness-workflow">
+          <h3>Review the decision. Check the evidence. Explain the finding.</h3>
+          <p>The harness prompts reviews of ambiguity, material adjustments,
+            and results. Use <code>ebg_review</code> to open a checkpoint,
+            <code>ebg_evidence</code> to inspect its sources, and
+            <code>ebg_record</code> to record the finding. Supported,
+            consequential issues must also be explained to the user.</p>
+        </div>
+        <details class="harness-custom">
+          <summary>Connect the harness to your own workspace</summary>
+          <div>
+            <p>From the EBG repository, generate the integration files:</p>
+            <pre tabindex="0" aria-label="Generate harness integration files"><code>python -m codex_harness --state-dir outputs/harness/demo setup --output outputs/harness/integration</code></pre>
+            <p>Merge the generated <code>config.toml</code> MCP entry into your
+              workspace's <code>.codex/config.toml</code>, place the generated
+              skills in <code>.agents/skills/</code>, and load the generated
+              <code>hooks.json</code> with hooks enabled in Codex.
+              Setup generates files; the case runner above performs the
+              integration for the example workspace.</p>
+            <p>See the <a href="https://github.com/zhk-lab/EBG/tree/main/harness"
+              target="_blank" rel="noopener">harness documentation</a> and
+              <a href="https://github.com/zhk-lab/EBG/blob/main/harness/case_studies/run.py"
+              target="_blank" rel="noopener">runner configuration</a> for the
+              full integration.</p>
+          </div>
+        </details>
+        <div class="harness-links">
+          <a href="https://github.com/zhk-lab/EBG/tree/main/harness"
+            target="_blank" rel="noopener">Installation &amp; documentation ↗</a>
+          <a href="https://github.com/zhk-lab/EBG/blob/main/harness/docs/workflow.md"
+            target="_blank" rel="noopener">Review workflow ↗</a>
+          <a href="https://github.com/zhk-lab/EBG/tree/main/harness/case_studies"
+            target="_blank" rel="noopener">All five cases ↗</a>
         </div>
       </section>
     </main>
