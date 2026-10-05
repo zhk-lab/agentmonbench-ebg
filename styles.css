@@ -401,17 +401,10 @@ img {
 .dimension-decisions {
   border-top-color: #dab490;
 }
-.dimension-card .statistic-kicker {
-  color: #3b6fb6;
-  font-size: 0.8rem;
-}
-.dimension-decisions .statistic-kicker {
-  color: #a26636;
-}
 .dimension-card h3 {
   font-size: 1.45rem;
   line-height: 1.25;
-  margin: 12px 0 14px;
+  margin: 0 0 14px;
 }
 .dimension-card p,
 .dimension-tasks dd {
