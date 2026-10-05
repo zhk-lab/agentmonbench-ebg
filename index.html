@@ -127,30 +127,32 @@
             <span>Click the figure to enlarge.</span>
           </figcaption>
         </figure>
-        <div class="motivation-lead">
+        <div class="motivation-copy">
           <h2>Delegation still needs oversight.</h2>
           <p>
-            Agents can modify repositories, replicate research, and analyze data
-            over long workflows. Users become supervisors, but the volume of
-            agent activity can exceed what they can follow and evaluate.
-          </p>
-        </div>
-        <div class="motivation-copy">
-          <p>
-            Changing an evaluation criterion can alter a research conclusion;
-            dropping incomplete records can change the population an analysis
-            represents. Even reasonable choices may need user judgment, yet
-            their evidence is scattered across messages, tool results, and
-            intermediate artifacts.
-          </p>
-          <p class="research-question">
-            Which consequential decisions warrant user verification,
-            and what evidence helps users understand their implications?
+            In the example above, an agent excludes incomplete records before
+            analyzing the data. That choice changes which population the analysis
+            represents and can affect how the results should be interpreted.
+            The decision may be reasonable, but the user still needs to understand
+            its implications and judge whether it serves the intended goal.
           </p>
           <p>
-            <strong>AgentMonBench</strong> evaluates these oversight needs.
-            <strong>EBG</strong> organizes behavioral evidence so monitors can
-            connect decisions to the context users need to assess them.
+            As agents take on longer workflows, users move from making each
+            decision to overseeing execution. Delegation does not remove their
+            responsibility for those choices. Yet the evidence needed to assess
+            them is scattered across messages, code, tool results, and
+            intermediate artifacts, making consequential decisions difficult
+            to identify and verify.
+          </p>
+          <p>
+            We therefore study monitors that surface consequential decisions and
+            locate evidence for user verification. <strong>AgentMonBench</strong>
+            evaluates these abilities in software-engineering tasks, covering
+            requirement–behavior alignment and awareness of consequential choices.
+            To support these judgments, the
+            <strong>Evidence-Grounded Behavior Graph (EBG)</strong> organizes
+            source-linked evidence into behaviors and relationships, helping
+            monitors interpret decisions in context.
           </p>
         </div>
       </section>

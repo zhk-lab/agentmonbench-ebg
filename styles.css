@@ -208,34 +208,23 @@ img {
   max-width: 960px;
   margin: 0 auto;
 }
-.motivation-lead {
-  max-width: 780px;
-  margin: 36px auto 25px;
-}
-.motivation-lead h2 {
-  font-size: 1.65rem;
-  margin-bottom: 12px;
-}
-.motivation-lead p {
-  line-height: 1.7;
-}
 .motivation-copy {
   max-width: 780px;
-  margin: 26px auto 0;
+  margin: 36px auto 0;
   text-align: left;
+}
+.motivation-copy h2 {
+  font-size: 1.65rem;
+  margin-bottom: 20px;
+}
+.motivation-copy p {
+  line-height: 1.7;
 }
 .motivation-copy p + p {
   margin-top: 18px;
 }
 .motivation-copy strong {
   color: var(--ink);
-}
-.research-question {
-  border-left: 3px solid #9fceec;
-  padding: 2px 0 2px 20px;
-  color: #454545;
-  font-size: 1.15rem;
-  line-height: 1.55;
 }
 .paper-preview {
   display: block;
@@ -1355,18 +1344,11 @@ tbody tr:last-child td {
   }
 }
 @media (max-width: 600px) {
-  .motivation-lead {
+  .motivation-copy {
     margin-top: 28px;
   }
-  .motivation-lead h2 {
+  .motivation-copy h2 {
     font-size: 1.4rem;
-  }
-  .motivation-copy {
-    margin-top: 22px;
-  }
-  .research-question {
-    font-size: 1.07rem;
-    padding-left: 15px;
   }
   .dimension-card h3 {
     font-size: 1.35rem;
